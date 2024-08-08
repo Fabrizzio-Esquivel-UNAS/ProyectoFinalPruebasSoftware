@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Escuelas";
+
+message Escuela {
+  string id = 1;
+  string nombre = 2;
+  bool isDeleted = 3;
+}
+
+message GetEscuelasByIdsResult {
+  repeated Escuela escuelas = 1;
+}
+
+message GetEscuelasByIdsRequest {
+  repeated string ids = 1;
+}

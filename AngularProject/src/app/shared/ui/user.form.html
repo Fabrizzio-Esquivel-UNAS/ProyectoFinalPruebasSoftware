@@ -1,0 +1,118 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()" *transloco="let t">
+    <div [hidden]="(rol==1 && formMode==1 && selectedObject!=undefined && selectedObject.id!=userId)">
+        <div class="flex">
+            <div class="flex-1">
+                <label for="name1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.firstName') }}</label>
+                <input id="name1" type="text" formControlName="firstName" placeholder="{{ t('etiquetas.firstName') }}" pInputText
+                    class="w-full mb-3">
+            </div>
+            <div class="mx-2"></div>
+            <div class="flex-1">
+                <label for="name2" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.lastName') }}</label>
+                <input id="name2" type="text" formControlName="lastName" placeholder="{{ t('etiquetas.lastName') }}" pInputText
+                    class="w-full mb-3">
+            </div>
+        </div>
+    
+        <div class="flex">
+            <div class="flex-1">
+                <label for="code1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.codigo') }}</label>
+                <p-inputMask
+                    id="code1"
+                    mask="9999999999"
+                    formControlName="codigo"
+                    placeholder="0000000000"
+                    styleClass="w-full mb-3"/>
+            </div>
+            <div class="mx-2"></div>
+            <div class="flex-1">
+                <label for="phone1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.telefono') }}</label>
+                <p-inputMask
+                    id="phone1"
+                    mask="999999999"
+                    formControlName="telefono"
+                    placeholder="000000000"
+                    styleClass="w-full mb-3"/>
+            </div>
+        </div>
+    
+        <label for="email1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.email') }}</label>
+        <input id="email1" type="text" formControlName="email" placeholder="{{ t('etiquetas.emailAddress') }}" pInputText
+            class="w-full mb-3">
+    
+        <div *ngIf="formMode==formModes.add; then agregarOnly"></div>
+        <ng-template #agregarOnly>
+            <label for="password1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.password') }}</label>
+            <input id="password1" type="password" formControlName="password" placeholder="{{ t('etiquetas.password') }}" pInputText
+                class="w-full mb-3">
+        </ng-template>
+    
+        <label for="escuela1" class="block text-left text-900 font-medium mb-2">{{ t('entidades.escuela.singular') }}</label>
+        <p-autoComplete
+            [suggestions]="filteredEscuelas"
+            [forceSelection]="true"
+            (completeMethod)="filteredEscuelas = escuelaService.filter($event.query)"
+            id="escuela1"
+            formControlName="escuelaId"
+            styleClass="w-full mb-3"
+            inputStyleClass="w-full"
+            optionLabel="nombre"
+            optionValue="id" />
+
+            <label for="linea" class="block text-left text-900 font-medium mb-2">{{ t('entidades.lineaInvestigacion.singular') }}</label>
+            <p-autoComplete
+                [suggestions]="filteredLineas"
+                [forceSelection]="true"
+                (completeMethod)="filteredLineas = lineaInvestigacionService.filter($event.query)"
+                id="linea"
+                formControlName="lineaInvestigacionId"
+                styleClass="w-full mb-3"
+                inputStyleClass="w-full"
+                optionLabel="nombre"
+                optionValue="id" />            
+    </div>
+
+    <div [hidden]="!(rol==0 || (rol==1 && formMode==1 && selectedObject!=undefined && selectedObject.id!=userId))">
+        <label for="rol1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.role') }}</label>
+        <p-dropdown
+            [options]="roles"
+            styleClass="w-full mb-3 text-left"
+            formControlName="role"
+            optionLabel="label"
+            optionValue="value">
+                <ng-template let-language pTemplate="item">
+                    <div class="flex align-items-center gap-20">
+                        <div>{{ language.label }}</div>
+                    </div>
+                </ng-template>
+        </p-dropdown>
+    </div>
+
+    <div hidden="true">
+        <label for="foto1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.fotoPerfil') }}</label>
+        <p-fileUpload
+            id="foto1"
+            mode="basic"
+            chooseLabel="{{ t('comandos.upload.valor', {valor: t('etiquetas.fotoPerfil')}) }}"
+            chooseIcon="pi pi-upload"
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            accept="image/*"
+            maxFileSize="1000000"
+            class="block text-left text-900 mb-3"
+            (onUpload)="onUpload($event)" />
+    </div>
+
+    <div class="flex align-items-center justify-content-between mb-6">
+    </div>
+    <div *ngIf="visible!=undefined; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+        <div class="flex justify-content-end gap-2">
+            <p-button label="{{ t('comandos.cancelar.verbo') }}" severity="secondary" (onClick)="visibleChange.emit(false)" />
+            <button pButton pRipple label="{{ t('comandos.aceptar.verbo') }}"></button>
+        </div>
+    </ng-template>
+    <ng-template #elseBlock>
+        <button pButton pRipple label="{{ t('botones.signup') }}" icon="pi pi-user" class="w-full"></button>
+    </ng-template>
+</form>

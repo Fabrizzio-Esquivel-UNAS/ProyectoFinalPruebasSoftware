@@ -1,0 +1,207 @@
+{
+    "mensajes": {
+        "welcome": "¡Bienvenido al Sistema de Gestion de Asesoria!",
+        "welcomeback": "Bienvenido de Vuelta",
+        "tituloLogin": "Inicio de sesión",
+        "preguntaLogin": "¿No tienes una cuenta?",
+        "respuestaLogin": "¡Registrate hoy!",
+        "tituloSignup": "Registro",
+        "preguntaSignup": "¿Ya tienes una cuenta?",
+        "respuestaSignup": "¡Inicia sesión!",
+        "vincularCalendario": "Ingresa el nombre del Tipo de Evento Calendly",
+        "calendarioAutorizado": "¡Calendario autorizado Exitosamente!",
+        "calendarioVinculado": "¡Ya tienes un Calendario vinculado!",
+        "redireccionamiento": "Será redireccionado en breve...",
+        "calendarioMissing":"El Calendario del Asesor no se encuentra disponible...",
+        "confirmar": "¿Estás seguro de {{valor}}?"
+    },
+    "roles": {
+        "4": {
+            "singular": "Usuario",
+            "plural": "Usuarios"
+        },
+        "3": {
+            "singular": "Asesorado",
+            "plural": "Asesorados"
+        },
+        "2": {
+            "singular": "Asesor",
+            "plural": "Asesores"
+        },
+        "1": {
+            "singular": "Coordinador",
+            "plural": "Coordinadores"
+        },
+        "0": {
+            "singular": "Administrador",
+            "plural": "Administradores"
+        }
+    },
+    "citaEstados": {
+        "0": "Programado",
+        "1": "Completado",
+        "2": "Inasistido",
+        "3": "Justificado",
+        "4": "Cancelado"
+    },
+    "solicitudStatus": {
+        "0": "Pendiente",
+        "1": "Aceptado",
+        "2": "Rechazado"
+    },
+    "botones": {
+        "enviarSolicitud": "Enviar solicitud",
+        "verDesarrollo": "Ver Desarrollo de Cita",
+        "signup": "Registrarse",
+        "login": "Iniciar sesión",
+        "rememberMe": "Recordar dispositivo",
+        "forgotPassword": "¿Olvidaste tu contraseña?"        
+    },
+    "rutas": {
+        "home": "Inicio",
+        "homepage": "Página de Inicio",
+        "solicitarAsesoria": "Solicitar Asesoria",
+        "listaAsesores": "Lista de Asesores",
+        "calendarioAsesor": "Calendario Calendly",
+        "calendarioAsesorado": "Programar Cita",
+        "citas": "Citas Programadas",
+        "solicitudes": "Solicitudes"
+    },
+    "comandos": {
+        "cancelar": {
+            "verbo": "Cancelar",
+            "valor": "Cancelar {{valor}}"
+        },
+        "ver": {
+            "verbo": "Ver",
+            "valor": "Ver {{valor}}"
+        },        
+        "aceptar": {
+            "verbo": "Aceptar",
+            "valor": "Aceptar {{valor}}"
+        },
+        "rechazar": {
+            "verbo": "Rechazar",
+            "valor": "Rechazar {{valor}}"
+        },        
+        "refresh": {
+            "verbo": "Actualizar",
+            "valor": "Actualizar {{valor}}"
+        },
+        "upload": {
+            "verbo": "Subir",
+            "valor": "Subir {{valor}}"
+        },
+        "registrar": {
+            "verbo": "Registrar",
+            "valor": "Registrar {{valor}}"
+        },
+        "eliminar": {
+            "verbo": "Eliminar",
+            "valor": "Eliminar {{valor}}"
+        },
+        "editar": {
+            "verbo": "Editar",
+            "valor": "Editar {{valor}}"
+        },
+        "gestionar": {
+            "verbo": "Gestionar",
+            "valor": "Gestionar {{valor}}"
+        },
+        "vincular": {
+            "verbo": "Vincular",
+            "valor": "Vincular {{valor}}"
+        },
+        "autorizar": {
+            "verbo": "Autorizar",
+            "valor": "Autorizar {{valor}}"
+        }        
+    },
+    "etiquetas": {
+        "codigo": "Codigo",
+        "firstName": "Nombre",
+        "lastName": "Apellido",
+        "fullName": "Nombre completo",
+        "telefono": "Telefono",
+        "email": "Correo",
+        "emailAddress": "Correo electronico",
+        "password": "Contraseña",
+        "fotoPerfil": "Foto de Perfil",
+        "role": "Rol",
+        "numeroTesis": "Número de Tesis",
+        "afinidadTesis": "Afinidad de Tesis",
+        "mensaje": "Mensaje",
+        "nombre": "Nombre",
+        "nombreDe": "Nombre de {{valor}}",
+        "nombreDel": "Nombre del {{valor}}",
+        "nombreDela": "Nombre de la {{entidad}}",
+        "estado": "Estado",
+        "fechaSolicitud": "Fecha de Recibo",
+        "fechaCreacion": "Fecha de Creacion",
+        "fechaRespuesta": "Fecha de Respuesta",
+        "fechaInicio": "Fecha de Inicio",
+        "fechaFin": "Fecha de Fin",
+        "desarrolloAsesorado": "Desarrollos del Asesorado",
+        "desarrolloAsesor": "Desarrollo del Asesor",
+        "id": "Id"
+    },
+    "entidades": {
+        "calendario": {
+            "singular": "Calendario",
+            "plural": "Calendarios"
+        },
+        "usuario": {
+            "singular": "Usuario",
+            "plural": "Usuarios"
+        },
+        "escuela": {
+            "singular": "Escuela",
+            "plural": "Escuelas"
+        },
+        "cita": {
+            "singular": "Cita",
+            "plural": "Citas"
+        },
+        "solicitud": {
+            "singular": "Solicitud",
+            "plural": "Solicitudes"
+        },        
+        "facultad": {
+            "singular": "Facultad",
+            "plural": "Facultades"
+        },        
+        "lineaInvestigacion": {
+            "singular": "Linea de Investigación",
+            "plural": "Lineas de Investigación"
+        },
+        "grupoInvestigacion": {
+            "singular": "Grupo de Investigación",
+            "plural": "Grupos de Investigación"
+        }
+    },
+    "reportes": {
+        "reportes": "Reportes",
+        "menus": {
+            "id": "Id",
+            "nombre": "Nombre",
+            "asesor": "Asesor",
+            "asesorado": "Asesorado",
+            "fecha": "Fecha",
+            "estado": "Estado",
+            "filtrar": "Filtrar",
+            "noFound": "Datos no encontrados"
+        },
+        "reporteGeneralCitas": {
+            "reporteCitas": "Reporte General de Citas",
+            "": ""
+        },
+        "estadoCitas": {
+            "estadoCitas": "Estado de Citas",
+            "filtrarEstado": "Filtrar por Estado"
+        },
+        "tiempoCitas": {
+            "tiempoCitas": "Fecha de citas",
+            "filtrarTiempo": "Filtrar por fecha"
+        }
+    }    
+}

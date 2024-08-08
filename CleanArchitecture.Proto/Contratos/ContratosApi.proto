@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Contratos";
+
+import "Contratos/Models.proto";
+
+service ContratosApi {
+  rpc GetByIds(GetContratosByIdsRequest) returns (GetContratosByIdsResult);
+}

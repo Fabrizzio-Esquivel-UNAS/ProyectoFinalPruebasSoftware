@@ -1,0 +1,114 @@
+<div class="card" *transloco="let t">
+    <div class="flex flex-row justify-content-start">
+        <p-button
+        pRipple
+        [disabled]="selectedSolicitud==null"
+        (onClick)="formularios.ver=true"
+        label="{{ t('comandos.ver.valor', { valor: t('entidades.solicitud.singular') }) }}"
+        icon="pi pi-user-plus"
+        styleClass=""/>
+        <div class="mr-auto"></div>
+        <p-button
+        pRipple
+        [hidden]="!(rol==2)"
+        [disabled]="selectedSolicitud==null || selectedSolicitud.estado!=0"
+        (onClick)="updateSolicitud(true)"
+        label="{{ t('comandos.aceptar.verbo') }}"
+        icon="pi pi-user-edit"
+        class="pr-3"
+        styleClass=""/>
+        <p-button
+        pRipple
+        [hidden]="!(rol==2)"
+        [disabled]="selectedSolicitud==null || selectedSolicitud.estado!=0"
+        (onClick)="updateSolicitud(false)"
+        label="{{ t('comandos.rechazar.verbo') }}"
+        icon="pi pi-user-minus"
+        class=""
+        styleClass=""/>
+    </div>
+    <p-table
+        [value]="solicitudes"
+        [columns]="cols"
+        selectionMode="single"
+        dataKey="id"
+        [(selection)]="selectedSolicitud"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="50">
+        <!-- <ng-template pTemplate="header">
+            <tr>
+                <th>{{ t('etiquetas.id') }}</th>
+                <th>{{ t('etiquetas.fechaSolicitud') }}</th>
+                <th>{{ t('etiquetas.estado') }}</th>
+                <th>{{ t('etiquetas.nombreDel', {valor: t('roles.3.singular')}) }}</th>
+                <th>{{ t('etiquetas.nombreDel', {valor: t('roles.2.singular')}) }}</th>                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-solicitud>
+            <tr [pSelectableRow]="solicitud">
+                <td>{{ solicitud.id }}</td>
+                <td>{{ solicitud.fechaCreacion | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}</td>
+                <td>{{ t('solicitudStatus.'+solicitud.estado) }}</td>
+                <td>{{ solicitud.asesorado ? solicitud.asesorado.fullName : "" }}</td>
+                <td>{{ solicitud.asesor ? solicitud.asesor.fullName : "" }}</td>
+            </tr>
+        </ng-template> -->
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    @if (col.field1) {
+                        {{ rowData[col.field1] ? rowData[col.field1][col.field2] : "" }}
+                    } @else if (col.date) {
+                        {{ rowData[col.date] | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}
+                    } @else if (col.estado) {
+                        {{ t('solicitudStatus.'+rowData[col.estado]) }}
+                    } @else {
+                        {{ rowData[col.field] }}
+                    }
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.ver.valor', {valor: t('entidades.solicitud.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.ver"
+    [style]="{ width: '40rem' }">
+    <solicitud-form
+        [formMode]="2"
+        [(visible)]="formularios.ver"
+        [selectedObject]="selectedSolicitud"/>
+</p-dialog>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.editar.valor', {valor: t('entidades.solicitud.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.editar"
+    [style]="{ width: '40rem' }">
+    <solicitud-form
+        [formMode]="1"
+        [(visible)]="formularios.editar"
+        [selectedObject]="selectedSolicitud"/>
+</p-dialog>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.eliminar.valor', {valor: t('entidades.solicitud.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.eliminar"
+    [style]="{ width: '40rem' }">
+    <solicitud-form
+        [formMode]="2"
+        [(visible)]="formularios.eliminar"
+        [selectedObject]="selectedSolicitud"/>
+</p-dialog>

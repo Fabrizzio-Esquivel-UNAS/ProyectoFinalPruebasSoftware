@@ -1,0 +1,50 @@
+<div class="card" *transloco="let t">
+    <form [formGroup]="solicitudForm" (ngSubmit)="onSubmit()">
+        <label for="lineas" class="block text-left text-900 font-medium mb-2">{{ t('entidades.lineaInvestigacion.singular') }}</label>
+        <p-autoComplete
+        [suggestions]="filteredLineas"
+        [forceSelection]="true"
+        formControlName="lineaInvestigacionId"
+        (onSelect)="onSelectLinea($event)"
+        (completeMethod)="filteredLineas = lineasInvestigacionService.filter($event.query)"
+        id="lineas"
+        optionLabel="nombre"
+        optionValue="id"
+        inputStyleClass="w-full"
+        styleClass="w-full mb-3" />
+        <label for="asesor1" class="block text-left text-900 font-medium mb-2">{{ t('roles.2.singular') }}</label>
+        <p-autoComplete
+        [suggestions]="filteredAsesores"
+        formControlName="asesorUserId"
+        [forceSelection]="true"
+        (completeMethod)="filteredAsesores = usuarioService.filterAsesor($event.query, asesorLineaId)"
+        (onSelect)="onSelectAsesor($event)"
+        id="asesor1"
+        optionLabel="fullName"
+        optionValue="id"
+        inputStyleClass="w-full"
+        styleClass="w-full mb-3" />
+
+        <label for="numTesis1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.numeroTesis') }}</label>
+        <p-inputNumber
+        mode="decimal"
+        [useGrouping]="false"
+        [showButtons]="true"
+        inputId="minmax-buttons"
+        formControlName="numeroTesis"
+        styleClass="w-full mb-3"
+        class="w-full"
+        [min]="0"
+        [max]="100" />
+
+        <label for="mensaje1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.mensaje') }}</label>
+        <textarea pInputTextarea
+        rows="5"
+        class="w-full mb-3"
+        styleClass="w-full mb-3"
+        formControlName="mensaje">
+        </textarea>
+
+        <button pButton pRipple label="Enviar solicitud" icon="pi pi-user" class="w-full"></button>
+    </form>
+</div>

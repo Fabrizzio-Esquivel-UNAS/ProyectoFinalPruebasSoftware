@@ -1,0 +1,13 @@
+<div class="layout-footer justify-content-end">
+    <span class="font-bold p-3 text-xl pi pi-language"> :</span>
+    <p-dropdown
+        [options]="languages"
+        [(ngModel)]="selectedLanguage"
+        (onChange)="onChange($event)">
+            <ng-template let-language pTemplate="item">
+                <div class="flex align-items-center gap-2">
+                    <div>{{ language.label }}</div>
+                </div>
+            </ng-template>
+    </p-dropdown>
+</div>

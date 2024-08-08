@@ -1,0 +1,92 @@
+<div class="card" *transloco="let t">
+    <p-table
+        #dt1
+        [value]="citas"
+        dataKey="id"
+        [rows]="50"
+        [rowsPerPageOptions]="[50, 75, 100]"
+        [loading]="loading"
+        [paginator]="true"
+        [globalFilterFields]="['id', 'desarrolloAsesor', 'desarrolloAsesorado', 'fechaCreacion', 'estado']"
+        >
+        <ng-template pTemplate="caption">
+            <div class="flex">
+                <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" />
+            </div>
+        </ng-template>
+
+
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        {{ t('reportes.menus.id') }}
+                        <p-columnFilter type="text" field="id" display="menu" />
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        {{ t('reportes.menus.asesor') }}
+                        <p-columnFilter type="text" field="desarrolloAsesor" display="menu" />
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex align-items-center">
+                        {{ t('reportes.menus.asesorado') }}
+                        <p-columnFilter type="text" field="desarrolloAsesorado" display="menu" />
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        {{ t('reportes.menus.fecha') }}
+                        <p-columnFilter type="date" field="fechaCreacion" display="menu" />
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex align-items-center">
+                        {{ t('reportes.menus.estado') }}
+                        <p-columnFilter field="estado" matchMode="equals" display="menu">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [options]="statuses" placeholder="Any"/>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+
+
+
+
+        <ng-template pTemplate="body" let-cita>
+            <tr>
+                <td>
+                    {{ cita.id }}
+                </td>
+                <td>
+                    <span class="ml-1 vertical-align-middle">{{ cita.desarrolloAsesor }}</span>
+                </td>
+                <td>
+                    <span class="ml-1 vertical-align-middle">{{ cita.desarrolloAsesorado }}</span>
+                </td>
+                <td>
+                    {{ cita.fechaCreacion }}
+                </td>
+                <td>
+                    {{ cita.estado }}
+                </td>
+            </tr>
+        </ng-template>
+
+
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">{{ t('reportes.menus.noFound') }}</td>
+            </tr>
+        </ng-template>
+
+
+    </p-table>
+</div>

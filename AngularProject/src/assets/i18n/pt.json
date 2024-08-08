@@ -1,0 +1,207 @@
+{
+    "mensajes": {
+        "welcome": "Bem-vindo ao Sistema de Gestão de Assessoria!",
+        "welcomeback": "Bem-vindo de volta",
+        "tituloLogin": "Login",
+        "preguntaLogin": "Não tem uma conta?",
+        "respuestaLogin": "Cadastre-se hoje!",
+        "tituloSignup": "Cadastro",
+        "preguntaSignup": "Já tem uma conta?",
+        "respuestaSignup": "Faça login!",
+        "vincularCalendario": "Digite o nome do Tipo de Evento do Calendly",
+        "calendarioAutorizado": "Calendário autorizado com sucesso!",
+        "calendarioVinculado": "Você já tem um calendário vinculado!",
+        "redireccionamiento": "Você será redirecionado em breve...",
+        "calendarioMissing": "O calendário do assessor não está disponível...",
+        "confirmar": "Você tem certeza de {{valor}}?"
+    },
+    "roles": {
+        "4": {
+            "singular": "Usuário",
+            "plural": "Usuários"
+        },
+        "3": {
+            "singular": "Aconselhado",
+            "plural": "Aconselhados"
+        },
+        "2": {
+            "singular": "Assessor",
+            "plural": "Assessores"
+        },
+        "1": {
+            "singular": "Coordenador",
+            "plural": "Coordenadores"
+        },
+        "0": {
+            "singular": "Administrador",
+            "plural": "Administradores"
+        }
+    },
+    "citaEstados": {
+        "0": "Agendado",
+        "1": "Concluído",
+        "2": "Ausente",
+        "3": "Justificado",
+        "4": "Cancelado"
+    },
+    "solicitudStatus": {
+        "0": "Pendente",
+        "1": "Aceito",
+        "2": "Rejeitado"
+    },
+    "botones": {
+        "enviarSolicitud": "Enviar solicitação",
+        "verDesarrollo": "Ver Desenvolvimento da Consulta",
+        "signup": "Cadastrar-se",
+        "login": "Fazer login",
+        "rememberMe": "Lembrar dispositivo",
+        "forgotPassword": "Esqueceu sua senha?"
+    },
+    "rutas": {
+        "home": "Início",
+        "homepage": "Página Inicial",
+        "solicitarAsesoria": "Solicitar Assessoria",
+        "listaAsesores": "Lista de Assessores",
+        "calendarioAsesor": "Calendário do Calendly",
+        "calendarioAsesorado": "Agendar Consulta",
+        "citas": "Consultas Agendadas",
+        "solicitudes": "Solicitações"
+    },
+    "comandos": {
+        "cancelar": {
+            "verbo": "Cancelar",
+            "valor": "Cancelar {{valor}}"
+        },
+        "ver": {
+            "verbo": "Ver",
+            "valor": "Ver {{valor}}"
+        },
+        "aceptar": {
+            "verbo": "Aceitar",
+            "valor": "Aceitar {{valor}}"
+        },
+        "rechazar": {
+            "verbo": "Rejeitar",
+            "valor": "Rejeitar {{valor}}"
+        },
+        "refresh": {
+            "verbo": "Atualizar",
+            "valor": "Atualizar {{valor}}"
+        },
+        "upload": {
+            "verbo": "Enviar",
+            "valor": "Enviar {{valor}}"
+        },
+        "registrar": {
+            "verbo": "Registrar",
+            "valor": "Registrar {{valor}}"
+        },
+        "eliminar": {
+            "verbo": "Excluir",
+            "valor": "Excluir {{valor}}"
+        },
+        "editar": {
+            "verbo": "Editar",
+            "valor": "Editar {{valor}}"
+        },
+        "gestionar": {
+            "verbo": "Gerenciar",
+            "valor": "Gerenciar {{valor}}"
+        },
+        "vincular": {
+            "verbo": "Vincular",
+            "valor": "Vincular {{valor}}"
+        },
+        "autorizar": {
+            "verbo": "Autorizar",
+            "valor": "Autorizar {{valor}}"
+        }
+    },
+    "etiquetas": {
+        "codigo": "Código",
+        "firstName": "Nome",
+        "lastName": "Sobrenome",
+        "fullName": "Nome completo",
+        "telefono": "Telefone",
+        "email": "E-mail",
+        "emailAddress": "Endereço de e-mail",
+        "password": "Senha",
+        "fotoPerfil": "Foto de Perfil",
+        "role": "Função",
+        "numeroTesis": "Número da Tese",
+        "afinidadTesis": "Afinidade da Tese",
+        "mensaje": "Mensagem",
+        "nombre": "Nome",
+        "nombreDe": "Nome de {{valor}}",
+        "nombreDel": "Nome do {{valor}}",
+        "nombreDela": "Nome da {{entidad}}",
+        "estado": "Estado",
+        "fechaSolicitud": "Data de Recebimento",
+        "fechaCreacion": "Data de Criação",
+        "fechaRespuesta": "Data de Resposta",
+        "fechaInicio": "Data de Início",
+        "fechaFin": "Data de Término",
+        "desarrolloAsesorado": "Desenvolvimentos do Aconselhado",
+        "desarrolloAsesor": "Desenvolvimento do Assessor",
+        "id": "Id"
+    },
+    "entidades": {
+        "calendario": {
+            "singular": "Calendário",
+            "plural": "Calendários"
+        },
+        "usuario": {
+            "singular": "Usuário",
+            "plural": "Usuários"
+        },
+        "escuela": {
+            "singular": "Escola",
+            "plural": "Escolas"
+        },
+        "cita": {
+            "singular": "Consulta",
+            "plural": "Consultas"
+        },
+        "solicitud": {
+            "singular": "Solicitação",
+            "plural": "Solicitações"
+        },
+        "facultad": {
+            "singular": "Faculdade",
+            "plural": "Faculdades"
+        },
+        "lineaInvestigacion": {
+            "singular": "Linha de Pesquisa",
+            "plural": "Linhas de Pesquisa"
+        },
+        "grupoInvestigacion": {
+            "singular": "Grupo de Pesquisa",
+            "plural": "Grupos de Pesquisa"
+        }
+    },
+    "reportes": {
+        "reportes": "Relatórios",
+        "menus": {
+            "id": "Id",
+            "nombre": "Nome",
+            "asesor": "Assessor",
+            "asesorado": "Aconselhado",
+            "fecha": "Data",
+            "estado": "Estado",
+            "filtrar": "Filtrar",
+            "noFound": "Dados não encontrados"
+        },
+        "reporteGeneralCitas": {
+            "reporteCitas": "Relatório Geral de Consultas",
+            "": ""
+        },
+        "estadoCitas": {
+            "estadoCitas": "Estado das Consultas",
+            "filtrarEstado": "Filtrar por Estado"
+        },
+        "tiempoCitas": {
+            "tiempoCitas": "Data das Consultas",
+            "filtrarTiempo": "Filtrar por Data"
+        }
+    }
+}

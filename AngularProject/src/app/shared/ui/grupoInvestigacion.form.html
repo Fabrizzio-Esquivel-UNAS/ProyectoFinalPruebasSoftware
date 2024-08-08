@@ -1,0 +1,29 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()" *transloco="let t">
+    <label for="name1" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.nombre') }}</label>
+    <input
+        pInputText 
+        type="text" 
+        id="name1" 
+        formControlName="nombre" 
+        placeholder="{{ t('etiquetas.nombre') }}"
+        class="w-full mb-3">
+
+    <label for="usuario1" class="block text-left text-900 font-medium mb-2">{{ t('roles.1.singular') }}</label>
+    <p-autoComplete
+        [suggestions]="filteredUsuarios"
+        [forceSelection]="true"
+        (completeMethod)="filteredUsuarios = usuarioService.filterCoordinador($event.query)"
+        id="usuario1"
+        formControlName="coordinadorUserId"
+        styleClass="w-full mb-3"
+        inputStyleClass="w-full"
+        optionLabel="fullName"
+        optionValue="id" />
+
+    <div class="flex align-items-center justify-content-between mb-6">
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="{{ t('comandos.cancelar.verbo') }}" severity="secondary" (onClick)="visibleChange.emit(false)" />
+        <button pButton pRipple label="{{ t('comandos.aceptar.verbo') }}"></button>
+    </div>
+</form>

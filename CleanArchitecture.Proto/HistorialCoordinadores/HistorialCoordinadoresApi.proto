@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.HistorialCoordinadores";
+
+import "HistorialCoordinadores/Models.proto";
+
+service HistorialCoordinadoresApi {
+  rpc GetByIds(GetHistorialCoordinadoresByIdsRequest) returns (GetHistorialCoordinadoresByIdsResult);
+}

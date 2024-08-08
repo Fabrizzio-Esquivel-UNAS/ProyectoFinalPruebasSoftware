@@ -1,0 +1,207 @@
+{
+    "mensajes": {
+        "welcome": "Riqsinakuyniykita Asesoria Chuyachina Sutinchaypi!",
+        "welcomeback": "Riqsinakusqaykiman Kutimuy",
+        "tituloLogin": "Yachay Tiyana",
+        "preguntaLogin": "Mana chaypi kaykunachu?",
+        "respuestaLogin": "Qayna punchaw riy!",
+        "tituloSignup": "Qaylla Punchaw",
+        "preguntaSignup": "Chaypi kaykunachu?",
+        "respuestaSignup": "Yachay tiyay!",
+        "vincularCalendario": "Calendly Wakin Punchawpa Kawsayniyta Qillqay",
+        "calendarioAutorizado": "Punchawwan kayta qallarisqayki!",
+        "calendarioVinculado": "Ñawpaq punchawwan kayta tiyan",
+        "redireccionamiento": "Chaymanmi qawaykurirqa...",
+        "calendarioMissing": "Asesorku punchawnin mana tiyanichu...",
+        "confirmar": "¿Allinchu kayta {{valor}}?"
+    },
+    "roles": {
+        "4": {
+            "singular": "Runa",
+            "plural": "Runakuna"
+        },
+        "3": {
+            "singular": "Yachachik",
+            "plural": "Yachachikuna"
+        },
+        "2": {
+            "singular": "Yachachikuq",
+            "plural": "Yachachikuqkuna"
+        },
+        "1": {
+            "singular": "Kamachiq",
+            "plural": "Kamachiqkuna"
+        },
+        "0": {
+            "singular": "Kamachik",
+            "plural": "Kamachikkuna"
+        }
+    },
+    "citaEstados": {
+        "0": "Ñawpaq Kawsay",
+        "1": "Tukuy",
+        "2": "Mana Chayamuy",
+        "3": "Justificado",
+        "4": "Wañuchiy"
+    },
+    "solicitudStatus": {
+        "0": "Watay",
+        "1": "Chaskiy",
+        "2": "Mana Chaskiy"
+    },
+    "botones": {
+        "enviarSolicitud": "Ñawi Chaskiy",
+        "verDesarrollo": "Rikuy Kamachikuna Kawsay",
+        "signup": "Qayna Punchaw",
+        "login": "Yachay tiyay",
+        "rememberMe": "Yuyarikuy Ayllukunata",
+        "forgotPassword": "¿Paswatata wañuchisqayki?"
+    },
+    "rutas": {
+        "home": "Wasiy",
+        "homepage": "Ñawi Punchawpa Wasiy",
+        "solicitarAsesoria": "Asesoria Ñawi Chaskiy",
+        "listaAsesores": "Asesorpa Sutinchaykuna",
+        "calendarioAsesor": "Calendlypa Punchaw",
+        "calendarioAsesorado": "Kamachikuna Kawsay",
+        "citas": "Ñawi Kawsaykuna",
+        "solicitudes": "Ñawi Chaskikunapa"
+    },
+    "comandos": {
+        "cancelar": {
+            "verbo": "Wañuchiy",
+            "valor": "Wañuchiy {{valor}}"
+        },
+        "ver": {
+            "verbo": "Rikuy",
+            "valor": "Rikuy {{valor}}"
+        },
+        "aceptar": {
+            "verbo": "Chaskiy",
+            "valor": "Chaskiy {{valor}}"
+        },
+        "rechazar": {
+            "verbo": "Mana Chaskiy",
+            "valor": "Mana Chaskiy {{valor}}"
+        },
+        "refresh": {
+            "verbo": "Qatunariy",
+            "valor": "Qatunariy {{valor}}"
+        },
+        "upload": {
+            "verbo": "Rikuy",
+            "valor": "Rikuy {{valor}}"
+        },
+        "registrar": {
+            "verbo": "Qawariy",
+            "valor": "Qawariy {{valor}}"
+        },
+        "eliminar": {
+            "verbo": "Kikllariy",
+            "valor": "Kikllariy {{valor}}"
+        },
+        "editar": {
+            "verbo": "Qellqay",
+            "valor": "Qellqay {{valor}}"
+        },
+        "gestionar": {
+            "verbo": "Kamachikuy",
+            "valor": "Kamachikuy {{valor}}"
+        },
+        "vincular": {
+            "verbo": "Sapanakuy",
+            "valor": "Sapanakuy {{valor}}"
+        },
+        "autorizar": {
+            "verbo": "Qawachiy",
+            "valor": "Qawachiy {{valor}}"
+        }
+    },
+    "etiquetas": {
+        "codigo": "Qillqayniyuq",
+        "firstName": "Sutinpa Ñawi",
+        "lastName": "Sutinpa Qipa",
+        "fullName": "Sutinpa Tukuy",
+        "telefono": "Telefonu",
+        "email": "Correo",
+        "emailAddress": "Correo Elektroniku",
+        "password": "Pukllana Sutin",
+        "fotoPerfil": "Runa Aywan",
+        "role": "Kamachikuy",
+        "numeroTesis": "Tesista Qillqay",
+        "afinidadTesis": "Tesista Sutin",
+        "mensaje": "Willakuy",
+        "nombre": "Sutin",
+        "nombreDe": "Sutin de {{valor}}",
+        "nombreDel": "Sutin del {{valor}}",
+        "nombreDela": "Sutin de la {{entidad}}",
+        "estado": "Kawsay",
+        "fechaSolicitud": "Ñawi Chaskiy Punchaw",
+        "fechaCreacion": "Qaway Punchaw",
+        "fechaRespuesta": "Tukuy Punchaw",
+        "fechaInicio": "Qallariy Punchaw",
+        "fechaFin": "Wañuy Punchaw",
+        "desarrolloAsesorado": "Asesorpa Tukuy",
+        "desarrolloAsesor": "Asesor Tukuy",
+        "id": "Id"
+    },
+    "entidades": {
+        "calendario": {
+            "singular": "Punchaw",
+            "plural": "Punchawkuna"
+        },
+        "usuario": {
+            "singular": "Runa",
+            "plural": "Runakuna"
+        },
+        "escuela": {
+            "singular": "Yachay Wasi",
+            "plural": "Yachay Wasikuna"
+        },
+        "cita": {
+            "singular": "Ñawi Kawsay",
+            "plural": "Ñawi Kawsaykuna"
+        },
+        "solicitud": {
+            "singular": "Ñawi Chaskiy",
+            "plural": "Ñawi Chaskikuna"
+        },
+        "facultad": {
+            "singular": "Yachay Wasi",
+            "plural": "Yachay Wasikuna"
+        },
+        "lineaInvestigacion": {
+            "singular": "Yachay Qhatu",
+            "plural": "Yachay Qhatukuna"
+        },
+        "grupoInvestigacion": {
+            "singular": "Yachay Ayllu",
+            "plural": "Yachay Ayllukuna"
+        }
+    },
+    "reportes": {
+        "reportes": "Willakuykuna",
+        "menus": {
+            "id": "Id",
+            "nombre": "Sutin",
+            "asesor": "Asesor",
+            "asesorado": "Aconselhado",
+            "fecha": "Punchaw",
+            "estado": "Kawsay",
+            "filtrar": "Chaskiy",
+            "noFound": "Ñawi Kawsay mana tiyanichu"
+        },
+        "reporteGeneralCitas": {
+            "reporteCitas": "Ñawi Kawsaypa Willakuy Tukuy",
+            "": ""
+        },
+        "estadoCitas": {
+            "estadoCitas": "Ñawi Kawsaypa Tukuy",
+            "filtrarEstado": "Chaskiy Kawsaywan"
+        },
+        "tiempoCitas": {
+            "tiempoCitas": "Ñawi Kawsay Punchaw",
+            "filtrarTiempo": "Punchawwan Chaskiy"
+        }
+    }
+}

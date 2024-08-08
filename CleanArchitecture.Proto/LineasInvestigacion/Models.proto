@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.LineasInvestigacion";
+
+message LineaInvestigacion {
+  string id = 1;
+  string nombre = 2;
+  bool isDeleted = 3;
+}
+
+message GetLineasInvestigacionByIdsResult {
+  repeated LineaInvestigacion lineasInvestigacion = 1;
+}
+
+message GetLineasInvestigacionByIdsRequest {
+  repeated string ids = 1;
+}

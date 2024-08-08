@@ -1,0 +1,67 @@
+<div class="card" *transloco="let t">
+    <div class="flex flex-row justify-content-start">
+        <p-button
+        pRipple
+        [hidden]="calendarioId!=undefined"
+        (onClick)="onAutorizar()"
+        label="{{ t('comandos.autorizar.valor', { valor: t('entidades.calendario.singular') }) }}"
+        icon="pi pi-verified"
+        styleClass=""/>
+
+        <p-button
+        pRipple
+        [hidden]="calendarioUrl!=undefined || calendarioId==undefined"
+        (onClick)="visible.vincular=true"
+        label="{{ t('comandos.vincular.valor', { valor: t('entidades.calendario.singular') }) }}"
+        icon="pi pi-calendar-plus"
+        styleClass=""/>
+
+        <p-button
+        pRipple
+        [hidden]="calendarioUrl==undefined || calendarioId==undefined"
+        (onClick)="redirectCalendario()"
+        label="{{ t('mensajes.calendarioVinculado') }}"
+        iconPos="right"
+        icon="pi pi-external-link"
+        class="pr-3"
+        styleClass=""/>
+
+        <div class="mr-auto"></div>
+
+        <p-button
+        pRipple
+        [hidden]="calendarioId==undefined"
+        (onClick)="visible.eliminar=true"
+        label="{{ t('comandos.eliminar.valor', { valor: t('entidades.calendario.singular') }) }}"
+        icon="pi pi-calendar-plus"
+        styleClass=""/>      
+    </div>
+</div>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.vincular.valor', {valor: t('entidades.calendario.singular')}) }}"
+    [modal]="true"
+    [(visible)]="visible.vincular"
+    [style]="{ width: '40rem' }">
+    <span class="p-text-secondary block text-left block mb-5">{{ t('mensajes.vincularCalendario') }}</span>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="nombre" class="block text-left font-semibold w-6rem">Nombre</label>
+        <input pInputText [(ngModel)]="nombreEvento" id="nombre" class="flex-auto w-full" autocomplete="off" />
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="{{ t('comandos.cancelar.verbo') }}" severity="secondary" (onClick)="visible.vincular = false" />
+        <p-button label="{{ t('comandos.aceptar.verbo') }}" (onClick)="onVincular(); visible.vincular = false" />
+    </div>    
+</p-dialog>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.eliminar.valor', {valor: t('entidades.calendario.singular')}) }}"
+    [modal]="true"
+    [(visible)]="visible.eliminar"
+    [style]="{ width: '40rem' }">
+    <span class="p-text-secondary block text-left block mb-5">{{ t('mensajes.confirmar', {valor: t('comandos.eliminar.valor', {valor: t('entidades.calendario.singular')})}) }}</span>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="{{ t('comandos.cancelar.verbo') }}" severity="secondary" (onClick)="visible.eliminar = false" />
+        <p-button label="{{ t('comandos.aceptar.verbo') }}" (onClick)="onEliminar(); visible.eliminar = false" />
+    </div>    
+</p-dialog>

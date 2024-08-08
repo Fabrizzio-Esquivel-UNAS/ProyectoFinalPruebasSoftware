@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Contratos";
+
+message Contrato {
+  string id = 1;
+  string fechaInicio = 2;
+  string fechaFinal = 3;
+  string nombre = 4;
+}
+
+message GetContratosByIdsResult {
+  repeated Contrato contratos = 1;
+}
+
+message GetContratosByIdsRequest {
+  repeated string ids = 1;
+}

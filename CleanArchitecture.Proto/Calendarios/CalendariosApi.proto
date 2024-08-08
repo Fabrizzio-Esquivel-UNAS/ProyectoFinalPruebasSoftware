@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Calendarios";
+
+import "Calendarios/Models.proto";
+
+service CalendariosApi {
+  rpc GetByIds(GetCalendariosByIdsRequest) returns (GetCalendariosByIdsResult);
+}

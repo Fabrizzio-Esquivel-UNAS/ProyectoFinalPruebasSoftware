@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Solicitudes";
+
+message Solicitud {
+  string id = 1;
+  int32 numeroTesis = 2;
+  bool isDeleted = 3;
+}
+
+message GetSolicitudesByIdsResult {
+  repeated Solicitud solicitudes = 1;
+}
+
+message GetSolicitudesByIdsRequest {
+  repeated string ids = 1;
+}

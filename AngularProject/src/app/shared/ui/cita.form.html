@@ -1,0 +1,49 @@
+<form [formGroup]="formGroup" (ngSubmit)="submitForm()" *transloco="let t">
+    <div [hidden]="!(rol==2)">
+        <label for="estado" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.estado') }}</label>
+        <p-dropdown
+            [options]="estados"
+            styleClass="w-full mb-3 text-left"
+            formControlName="estado"
+            variant="filled"
+            optionLabel="label"
+            optionValue="value">
+                <ng-template let-estado pTemplate="item">
+                    <div class="flex align-items-center gap-20">
+                        <div>{{ estado.label }}</div>
+                    </div>
+                </ng-template>
+        </p-dropdown>
+    </div>
+    <div [hidden]="!(rol==2)">
+        <label for="desarrolloAsesor" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.desarrolloAsesor') }}</label>
+        <textarea 
+            id="desarrolloAsesor"
+            class="w-full mb-3"
+            styleClass="w-full mb-3"
+            rows="5"
+            cols="30" 
+            formControlName="desarrolloAsesor"
+            pInputTextarea>
+        </textarea>
+    </div>
+    <div [hidden]="!(rol==3)">
+        <label for="desarrolloAsesorado" class="block text-left text-900 font-medium mb-2">{{ t('etiquetas.desarrolloAsesorado') }}</label>
+        <textarea 
+            id="desarrolloAsesorado"
+            class="w-full mb-3"
+            styleClass="w-full mb-3"
+            rows="5"
+            cols="30" 
+            formControlName="desarrolloAsesorado"
+            pInputTextarea>
+        </textarea>    
+    </div>
+
+    <div class="flex align-items-center justify-content-between mb-6">
+    </div>
+    <div class="flex justify-content-end gap-2">
+        <p-button label="{{ t('comandos.cancelar.verbo') }}" severity="secondary" (onClick)="visibleChange.emit(false)" />
+        <button pButton pRipple label="{{ t('comandos.aceptar.verbo') }}"></button>
+    </div>
+</form>

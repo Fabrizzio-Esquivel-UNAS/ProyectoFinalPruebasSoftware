@@ -1,0 +1,207 @@
+{
+    "mensajes": {
+        "welcome": "Welcome to the Advisory Management System!",
+        "welcomeback": "Welcome Back",
+        "tituloLogin": "Login",
+        "preguntaLogin": "Don't have an account?",
+        "respuestaLogin": "Sign up today!",
+        "tituloSignup": "Sign Up",
+        "preguntaSignup": "Already have an account?",
+        "respuestaSignup": "Log in!",
+        "vincularCalendario": "Enter the Calendly Event Type Name",
+        "calendarioAutorizado": "Calendar Successfully Authorized!",
+        "calendarioVinculado": "You already have a linked calendar!",
+        "redireccionamiento": "You will be redirected shortly...",
+        "calendarioMissing": "Advisor's calendar is not available...",
+        "confirmar": "Are you sure of {{valor}}?"
+    },
+    "roles": {
+        "4": {
+            "singular": "User",
+            "plural": "Users"
+        },
+        "3": {
+            "singular": "Advisee",
+            "plural": "Advisees"
+        },
+        "2": {
+            "singular": "Advisor",
+            "plural": "Advisors"
+        },
+        "1": {
+            "singular": "Coordinator",
+            "plural": "Coordinators"
+        },
+        "0": {
+            "singular": "Administrator",
+            "plural": "Administrators"
+        }
+    },
+    "citaEstados": {
+        "0": "Scheduled",
+        "1": "Completed",
+        "2": "Missed",
+        "3": "Justified",
+        "4": "Canceled"
+    },
+    "solicitudStatus": {
+        "0": "Pending",
+        "1": "Accepted",
+        "2": "Rejected"
+    },
+    "botones": {
+        "enviarSolicitud": "Send request",
+        "verDesarrollo": "View Appointment Development",
+        "signup": "Sign Up",
+        "login": "Log In",
+        "rememberMe": "Remember device",
+        "forgotPassword": "Forgot your password?"
+    },
+    "rutas": {
+        "home": "Home",
+        "homepage": "Homepage",
+        "solicitarAsesoria": "Request Advisory",
+        "listaAsesores": "Advisors List",
+        "calendarioAsesor": "Calendly Calendar",
+        "calendarioAsesorado": "Schedule Appointment",
+        "citas": "Scheduled Appointments",
+        "solicitudes": "Requests"
+    },
+    "comandos": {
+        "cancelar": {
+            "verbo": "Cancel",
+            "valor": "Cancel {{valor}}"
+        },
+        "ver": {
+            "verbo": "View",
+            "valor": "View {{valor}}"
+        },
+        "aceptar": {
+            "verbo": "Accept",
+            "valor": "Accept {{valor}}"
+        },
+        "rechazar": {
+            "verbo": "Reject",
+            "valor": "Reject {{valor}}"
+        },
+        "refresh": {
+            "verbo": "Refresh",
+            "valor": "Refresh {{valor}}"
+        },
+        "upload": {
+            "verbo": "Upload",
+            "valor": "Upload {{valor}}"
+        },
+        "registrar": {
+            "verbo": "Register",
+            "valor": "Register {{valor}}"
+        },
+        "eliminar": {
+            "verbo": "Delete",
+            "valor": "Delete {{valor}}"
+        },
+        "editar": {
+            "verbo": "Edit",
+            "valor": "Edit {{valor}}"
+        },
+        "gestionar": {
+            "verbo": "Manage",
+            "valor": "Manage {{valor}}"
+        },
+        "vincular": {
+            "verbo": "Link",
+            "valor": "Link {{valor}}"
+        },
+        "autorizar": {
+            "verbo": "Authorize",
+            "valor": "Authorize {{valor}}"
+        }
+    },
+    "etiquetas": {
+        "codigo": "Code",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "fullName": "Full Name",
+        "telefono": "Phone",
+        "email": "Email",
+        "emailAddress": "Email Address",
+        "password": "Password",
+        "fotoPerfil": "Profile Picture",
+        "role": "Role",
+        "numeroTesis": "Thesis Number",
+        "afinidadTesis": "Thesis Affinity",
+        "mensaje": "Message",
+        "nombre": "Name",
+        "nombreDe": "Name of {{valor}}",
+        "nombreDel": "Name of the {{valor}}",
+        "nombreDela": "Name of the {{entidad}}",
+        "estado": "State",
+        "fechaSolicitud": "Receipt Date",
+        "fechaCreacion": "Creation Date",
+        "fechaRespuesta": "Response Date",
+        "fechaInicio": "Start Date",
+        "fechaFin": "End Date",
+        "desarrolloAsesorado": "Advisee Developments",
+        "desarrolloAsesor": "Advisor Development",
+        "id": "Id"
+    },
+    "entidades": {
+        "calendario": {
+            "singular": "Calendar",
+            "plural": "Calendars"
+        },
+        "usuario": {
+            "singular": "User",
+            "plural": "Users"
+        },
+        "escuela": {
+            "singular": "School",
+            "plural": "Schools"
+        },
+        "cita": {
+            "singular": "Appointment",
+            "plural": "Appointments"
+        },
+        "solicitud": {
+            "singular": "Request",
+            "plural": "Requests"
+        },
+        "facultad": {
+            "singular": "Faculty",
+            "plural": "Faculties"
+        },
+        "lineaInvestigacion": {
+            "singular": "Research Line",
+            "plural": "Research Lines"
+        },
+        "grupoInvestigacion": {
+            "singular": "Research Group",
+            "plural": "Research Groups"
+        }
+    },
+    "reportes": {
+        "reportes": "Reports",
+        "menus": {
+            "id": "Id",
+            "nombre": "Name",
+            "asesor": "Advisor",
+            "asesorado": "Advisee",
+            "fecha": "Date",
+            "estado": "State",
+            "filtrar": "Filter",
+            "noFound": "Data not found"
+        },
+        "reporteGeneralCitas": {
+            "reporteCitas": "General Appointment Report",
+            "": ""
+        },
+        "estadoCitas": {
+            "estadoCitas": "Appointment State",
+            "filtrarEstado": "Filter by State"
+        },
+        "tiempoCitas": {
+            "tiempoCitas": "Appointment Date",
+            "filtrarTiempo": "Filter by Date"
+        }
+    }
+}

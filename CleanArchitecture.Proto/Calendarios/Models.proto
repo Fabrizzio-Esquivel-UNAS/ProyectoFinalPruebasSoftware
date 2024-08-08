@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Calendarios";
+
+message Calendario {
+  string id = 1;
+  string AccessToken = 2;
+  string RefreshToken = 3;
+  string UserUri = 4;
+  string EventType = 5;
+  bool isDeleted = 6;
+}
+
+message GetCalendariosByIdsResult {
+  repeated Calendario calendarios = 1;
+}
+
+message GetCalendariosByIdsRequest {
+  repeated string ids = 1;
+}

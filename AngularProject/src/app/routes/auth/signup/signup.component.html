@@ -1,0 +1,10 @@
+<div class="m-auto surface-card p-4 shadow-2 border-round w-full lg:w-6" *transloco="let t">
+    <div class="text-center mb-5">
+        <img src="assets/layout/images/hyper.svg" alt="Image" height="50" class="mb-3">
+        <div class="text-900 text-3xl font-medium mb-3">{{ t('mensajes.tituloSignup') }}</div>
+        <span class="text-600 font-medium line-height-3">{{ t('mensajes.preguntaSignup') }}</span>
+        <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer" routerLink="/login">{{ t('mensajes.respuestaSignup') }}</a>
+    </div>
+
+    <user-form (submitEvent)="onSubmit($event)"></user-form>
+</div>

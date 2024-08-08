@@ -1,0 +1,82 @@
+<div class="card" *transloco="let t">
+    <div class="flex flex-row justify-content-start">
+        <p-button
+        pRipple
+        (onClick)="formularios.registrar=true"
+        label="{{ t('comandos.registrar.valor', { valor: t('entidades.escuela.singular') }) }}"
+        icon="pi pi-user-plus"
+        styleClass=""/>
+        <div class="mr-auto"></div>
+        <p-button
+        pRipple
+        [disabled]="selectedEscuela==null"
+        (onClick)="formularios.editar=true"
+        label="{{ t('comandos.editar.verbo') }}"
+        icon="pi pi-user-edit"
+        class="pr-3"
+        styleClass=""/>
+        <p-button
+        pRipple
+        [disabled]="selectedEscuela==null"
+        (onClick)="formularios.eliminar=true"
+        label="{{ t('comandos.eliminar.verbo') }}"
+        icon="pi pi-user-minus"
+        class=""
+        styleClass=""/>
+    </div>
+    <p-table
+        [value]="escuelas"
+        selectionMode="single"
+        dataKey="id"
+        [(selection)]="selectedEscuela"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="50">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>{{ t('etiquetas.id') }}</th>
+                <th>{{ t('etiquetas.nombre') }}</th>
+                <th>{{ t('etiquetas.nombreDela', {entidad: t('entidades.facultad.singular')}) }}</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-escuela>
+            <tr [pSelectableRow]="escuela">
+                <td>{{ escuela.id }}</td>
+                <td>{{ escuela.nombre }}</td>
+                <td>{{ escuela.facultad ? escuela.facultad.nombre : "" }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.registrar.valor', {valor: t('entidades.escuela.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.registrar"
+    [style]="{ width: '40rem' }">
+    <escuela-form
+        [(visible)]="formularios.registrar"/>
+</p-dialog>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.editar.valor', {valor: t('entidades.escuela.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.editar"
+    [style]="{ width: '40rem' }">
+    <escuela-form
+        [formMode]="1"
+        [(visible)]="formularios.editar"
+        [selectedObject]="selectedEscuela"/>
+</p-dialog>
+
+<p-dialog *transloco="let t"
+    header="{{ t('comandos.eliminar.valor', {valor: t('entidades.escuela.singular')}) }}"
+    [modal]="true"
+    [(visible)]="formularios.eliminar"
+    [style]="{ width: '40rem' }">
+    <escuela-form
+        [formMode]="2"
+        [(visible)]="formularios.eliminar"
+        [selectedObject]="selectedEscuela"/>
+</p-dialog>

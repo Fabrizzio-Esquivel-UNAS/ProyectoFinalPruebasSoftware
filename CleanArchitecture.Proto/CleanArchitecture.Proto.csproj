@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Calendarios\CalendariosApi.proto" />
+      <None Remove="Citas\CitasApi.proto" />
+      <None Remove="Citas\Models.proto" />
+      <None Remove="Calendarios\Models.proto" />
+    </ItemGroup>
+
+    <ItemGroup>
+		<Protobuf Include="Contratos\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="Contratos\ContratosApi.proto" GrpcServices="Both" />
+		<Protobuf Include="Escuelas\EscuelasApi.proto" GrpcServices="Both" />
+		<Protobuf Include="Escuelas\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="Facultades\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="Facultades\FacultadesApi.proto" GrpcServices="Both" />
+		<Protobuf Include="GruposInvestigacion\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="GruposInvestigacion\GruposInvestigacionApi.proto" GrpcServices="Both" />
+		<Protobuf Include="HistorialCoordinadores\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="HistorialCoordinadores\HistorialCoordinadoresApi.proto" GrpcServices="Both" />
+		<Protobuf Include="Solicitudes\SolicitudesApi.proto" GrpcServices="Both" />
+		<Protobuf Include="Solicitudes\Models.proto" GrpcServices="Both" />
+		<Protobuf Include="LineasInvestigacion\LineasInvestigacionApi.proto" GrpcServices="Both" />
+		<Protobuf Include="LineasInvestigacion\Models.proto" GrpcServices="Both" />
+        <Protobuf Include="Citas\Models.proto" GrpcServices="Both" />
+        <Protobuf Include="Citas\CitasApi.proto" GrpcServices="Both" />
+        <Protobuf Include="Calendarios\Models.proto">
+          <GrpcServices>Both</GrpcServices>
+        </Protobuf>
+        <Protobuf Include="Calendarios\CalendariosApi.proto">
+          <GrpcServices>Both</GrpcServices>
+        </Protobuf>
+        <Protobuf Include="Users\Models.proto" GrpcServices="Both" />
+        <Protobuf Include="Users\UsersApi.proto" GrpcServices="Both" />
+        <Protobuf Include="Tenants\Models.proto" GrpcServices="Both" />
+        <Protobuf Include="Tenants\TenantsApi.proto" GrpcServices="Both" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Google.Apis.Auth.AspNetCore3" Version="1.68.0" />
+        <PackageReference Include="Google.Apis.Calendar.v3" Version="1.68.0.3430" />
+        <PackageReference Include="Google.Protobuf" Version="3.26.1" />
+        <PackageReference Include="Google.Protobuf.Tools" Version="3.26.1" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
+        <PackageReference Include="MailKit" Version="4.7.0" />
+        <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="8.0.6" />
+        <PackageReference Include="Microsoft.Extensions.Http.Polly" Version="8.0.6" />
+    </ItemGroup>
+
+</Project>

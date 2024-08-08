@@ -1,0 +1,16 @@
+{
+  "AsesoriaSettings": {
+    "FaltasRequeridasParaRiesgoDeAsesoria": 1,
+    "FaltasRequeridasParaAbandonoDeAsesoria": 2,
+    "SolicitudesMaximasAlDiaPorAsesor": 10
+  },
+  "MailSettings": {
+    "EmailId": "fabrizzio.esquivel.mori@gmail.com",
+    "Username": "fabrizzio.esquivel.mori@gmail.com",
+    "Name": "Sistema de Gestion de Asesoria",
+    "Password": "ksha xhuf elel kzid",
+    "Host": "smtp.gmail.com",
+    "Port": 587,
+    "UserSSL": true
+  }
+}

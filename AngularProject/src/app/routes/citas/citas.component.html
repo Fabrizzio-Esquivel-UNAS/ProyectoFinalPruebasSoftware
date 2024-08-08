@@ -1,0 +1,86 @@
+<div class="card" *transloco="let t">
+    <div class="flex flex-row justify-content-start">
+        <p-button
+        pRipple
+        [disabled]="selectedCita==null"
+        (onClick)="formularios.editar=true"
+        label="{{ t('botones.verDesarrollo') }}"
+        icon="pi pi-book"
+        class="pr-3"
+        styleClass=""/>
+
+        <div class="mr-auto"></div>
+
+        <p-button
+        pRipple
+        (onClick)="onRefresh()"
+        label="{{ t('comandos.refresh.verbo') }}"
+        icon="pi pi-refresh"
+        class="pr-3"
+        styleClass=""/>
+    </div>
+    <p-table
+        [value]="citas"
+        [columns]="cols"
+        selectionMode="single"
+        dataKey="id"
+        [(selection)]="selectedCita"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="50">
+        <!-- <ng-template pTemplate="header">
+            <tr>
+                <th>{{ t('etiquetas.fechaCreacion') }}</th>
+                <th>{{ t('etiquetas.estado') }}</th>
+                <th>{{ t('etiquetas.nombreValor', {valor: t('roles.3.singular')}) }}</th>
+                <th>{{ t('etiquetas.nombreValor', {valor: t('roles.2.singular')}) }}</th>         
+                <th>{{ t('etiquetas.fechaInicio') }}</th>
+                <th>{{ t('etiquetas.fechaFin') }}</th>                   
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-cita>
+            <tr [pSelectableRow]="cita">
+                <td>{{ cita.fechaCreacion  | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}</td>
+                <td>{{ t('citaEstados.'+cita.estado) }}</td>
+                <td>{{ cita.asesorado ? cita.asesorado.fullName : "" }}</td>
+                <td>{{ cita.asesor ? cita.asesor.fullName : "" }}</td>
+                <td>{{ cita.fechaInicio  | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}</td>
+                <td>{{ cita.fechaFin  | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}</td>
+            </tr>
+        </ng-template> -->
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{ col.header }}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    @if (col.field1) {
+                        {{ rowData[col.field1] ? rowData[col.field1][col.field2] : "" }}
+                    } @else if (col.date) {
+                        {{ rowData[col.date] | translocoDate: { dateStyle: 'medium', timeStyle: 'medium' } }}
+                    } @else if (col.estado) {
+                        {{ t('citaEstados.'+rowData[col.estado]) }}
+                    } @else {
+                        {{ rowData[col.field] }}
+                    }
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+</div>
+
+<p-dialog *transloco="let t"
+    header="{{ t('botones.verDesarrollo') }}"
+    [modal]="true"
+    [(visible)]="formularios.editar"
+    [style]="{ width: '40rem' }">
+    <cita-form
+        [formMode]="1"
+        [(visible)]="formularios.editar"
+        [selectedObject]="selectedCita"/>
+</p-dialog>

@@ -1,0 +1,20 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.HistorialCoordinadores";
+
+message HistorialCoordinador {
+  string id = 1;
+  string userId = 2;
+  string grupoinvestigacionId = 3;
+  string fechainicio = 4;
+  string fechafin = 5;
+  bool isDeleted = 6;
+}
+
+message GetHistorialCoordinadoresByIdsResult {
+  repeated HistorialCoordinador historialcoordinadores = 1;
+}
+
+message GetHistorialCoordinadoresByIdsRequest {
+  repeated string ids = 1;
+}

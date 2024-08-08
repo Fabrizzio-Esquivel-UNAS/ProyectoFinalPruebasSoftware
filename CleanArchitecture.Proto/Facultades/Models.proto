@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "CleanArchitecture.Proto.Facultades";
+
+message Facultad {
+  string id = 1;
+  string nombre = 2;
+  bool isDeleted = 3;
+}
+
+message GetFacultadesByIdsResult {
+  repeated Facultad facultades = 1;
+}
+
+message GetFacultadesByIdsRequest {
+  repeated string ids = 1;
+}

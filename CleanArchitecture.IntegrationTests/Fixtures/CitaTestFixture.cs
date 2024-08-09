@@ -10,6 +10,8 @@ public sealed class CitaTestFixture : TestFixtureBase
     public Guid CreatedCitaId { get; } = Guid.NewGuid();
     public Guid CreatedTenantId { get; } = Guid.NewGuid();
     public Guid CreatedFacultadId { get; } = Guid.NewGuid();
+    public Guid GrupoInvestigacionId { get; } = Guid.NewGuid();
+    public Guid LineaInvestigacionId { get; } = Guid.NewGuid();
     public Guid CreatedEscuelaId { get; } = Guid.NewGuid();
     public Guid CreatedUserId { get; } = Guid.NewGuid();
 
@@ -20,6 +22,16 @@ public sealed class CitaTestFixture : TestFixtureBase
         context.Tenants.Add(new Tenant(
             CreatedTenantId,
             "Test Tenant"));
+
+        context.GruposInvestigacion.Add(new GrupoInvestigacion(
+            GrupoInvestigacionId,
+            "Test Grupo de Investigacion"));
+
+        context.LineasInvestigacion.Add(new LineaInvestigacion(
+            LineaInvestigacionId,
+            CreatedFacultadId,
+            GrupoInvestigacionId,
+            "Test Linea de Investigacion"));
 
         context.Users.Add(new User(
             CreatedUserId,

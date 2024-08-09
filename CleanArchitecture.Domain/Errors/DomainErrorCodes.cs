@@ -129,7 +129,14 @@ public static class DomainErrorCodes
 
         // General
         public const string AlreadyExists = "SOLICITUD_ALREADY_EXISTS";
+
+        // Additional error codes from the validation tests
+        public const string EmptyAsesoradoUserId = "SOLICITUD_EMPTY_ASESORADO_USER_ID";
+        public const string EmptyAsesorUserId = "SOLICITUD_EMPTY_ASESOR_USER_ID";
+        public const string EmptyMensaje = "SOLICITUD_EMPTY_MENSAJE";
+        public const string NullMensaje = "SOLICITUD_NULL_MENSAJE";
     }
+
 
     public static class LineaInvestigacion
     {

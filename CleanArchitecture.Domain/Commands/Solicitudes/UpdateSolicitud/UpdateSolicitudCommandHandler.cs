@@ -88,9 +88,10 @@ public sealed class UpdateSolicitudCommandHandler : CommandHandlerBase,
 
         if (await CommitAsync())
         {
+            var solicitudEstado = (int)solicitud.Estado;
             await Bus.RaiseEventAsync(new SolicitudUpdatedEvent(
                 solicitud.Id,
-                (int)solicitud.Estado));
+                solicitudEstado));
         }
     }
 }

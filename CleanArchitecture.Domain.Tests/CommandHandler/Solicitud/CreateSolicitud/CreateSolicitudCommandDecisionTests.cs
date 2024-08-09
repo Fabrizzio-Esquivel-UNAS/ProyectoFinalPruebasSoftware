@@ -8,18 +8,18 @@ using Xunit;
 
 namespace CleanArchitecture.Domain.Tests.CommandHandler.Solicitud.CreateSolicitud;
 
-public sealed class CreateSolicitudCommandHandlerTests
+public sealed class CreateSolicitudCommandDecisionTests
 {
     private readonly CreateSolicitudCommandTestFixture _fixture = new();
 
     [Fact]
-    public async Task Should_Create_Solicitud()
+    public async Task Should_Not_TestValidityAsync()
     {
         _fixture.SetupCurrentUser();
         var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
         var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Asesor);
         var command = new CreateSolicitudCommand(
-            Guid.NewGuid(),
+            Guid.Empty,
             user.Id,
             asesorUser.Id,
             1,
@@ -28,14 +28,8 @@ public sealed class CreateSolicitudCommandHandlerTests
         await _fixture.CommandHandler.Handle(command, default);
 
         _fixture
-            .VerifyNoDomainNotification()
-            .VerifyCommit()
-            .VerifyRaisedEvent<SolicitudCreatedEvent>(x =>
-                x.AggregateId == command.AggregateId &&
-                x.AsesorUserId == command.AsesorUserId &&
-                x.AsesoradoUserId == command.AsesoradoUserId &&
-                x.NumeroTesis == command.NumeroTesis &&
-                x.Mensaje == command.Mensaje);
+            .VerifyNoCommit()
+            .VerifyNoRaisedEvent<SolicitudCreatedEvent>();
     }
 
     [Fact]
@@ -86,7 +80,30 @@ public sealed class CreateSolicitudCommandHandlerTests
     }
 
     [Fact]
-    public async Task Should_Not_Create_Solicitud_Insufficient_Asesor_Permissions_User()
+    public async Task Should_Not_Create_Solicitud_Asesor_Not_Found()
+    {
+        _fixture.SetupCurrentUser();
+        var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
+        var command = new CreateSolicitudCommand(
+            Guid.NewGuid(),
+            user.Id,
+            Guid.NewGuid(),
+            1,
+            "Test");
+
+        await _fixture.CommandHandler.Handle(command, default);
+
+        _fixture
+            .VerifyNoCommit()
+            .VerifyNoRaisedEvent<SolicitudCreatedEvent>()
+            .VerifyAnyDomainNotification()
+            .VerifyExistingNotification(
+                ErrorCodes.ObjectNotFound,
+                $"There is no user with Id {command.AsesorUserId}");
+    }
+
+    [Fact]
+    public async Task Should_Not_Create_Solicitud_Insufficient_Asesor_Permissions()
     {
         _fixture.SetupCurrentUser();
         var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
@@ -110,11 +127,34 @@ public sealed class CreateSolicitudCommandHandlerTests
     }
 
     [Fact]
-    public async Task Should_Not_Create_Solicitud_Insufficient_Asesor_Permissions_Asesorado()
+    public async Task Should_Not_Create_Solicitud_Asesorado_Not_Found()
     {
         _fixture.SetupCurrentUser();
-        var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
-        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Asesorado);
+        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Asesor);
+        var command = new CreateSolicitudCommand(
+            Guid.NewGuid(),
+            Guid.NewGuid(),
+            asesorUser.Id,
+            1,
+            "Test");
+
+        await _fixture.CommandHandler.Handle(command, default);
+
+        _fixture
+            .VerifyNoCommit()
+            .VerifyNoRaisedEvent<SolicitudCreatedEvent>()
+            .VerifyAnyDomainNotification()
+            .VerifyExistingNotification(
+                ErrorCodes.ObjectNotFound,
+                $"There is no user with Id {command.AsesoradoUserId}");
+    }
+
+    [Fact]
+    public async Task Should_Not_Create_Solicitud_Insufficient_Asesorado_Permissions()
+    {
+        _fixture.SetupCurrentUser();
+        var user = _fixture.SetupUserWithRole(Enums.UserRole.Admin);
+        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Asesor);
         var command = new CreateSolicitudCommand(
             Guid.NewGuid(),
             user.Id,
@@ -129,85 +169,7 @@ public sealed class CreateSolicitudCommandHandlerTests
             .VerifyNoRaisedEvent<SolicitudCreatedEvent>()
             .VerifyAnyDomainNotification()
             .VerifyExistingNotification(
-                ErrorCodes.InsufficientPermissions,
-                $"The user with Id {command.AsesorUserId} does not have the permissions of 'Asesor' role");
-    }
-
-    [Fact]
-    public async Task Should_Create_Solicitud_Asesor_Permissions_Asesor()
-    {
-        _fixture.SetupCurrentUser();
-        var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
-        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Asesor);
-        var command = new CreateSolicitudCommand(
-            Guid.NewGuid(),
-            user.Id,
-            asesorUser.Id,
-            1,
-            "Test");
-
-        await _fixture.CommandHandler.Handle(command, default);
-
-        _fixture
-            .VerifyNoDomainNotification()
-            .VerifyCommit()
-            .VerifyRaisedEvent<SolicitudCreatedEvent>(x =>
-                x.AggregateId == command.AggregateId &&
-                x.AsesorUserId == command.AsesorUserId &&
-                x.AsesoradoUserId == command.AsesoradoUserId &&
-                x.NumeroTesis == command.NumeroTesis &&
-                x.Mensaje == command.Mensaje);
-    }
-
-    [Fact]
-    public async Task Should_Create_Solicitud_Asesor_Permissions_Coordinador()
-    {
-        _fixture.SetupCurrentUser();
-        var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
-        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Coordinador);
-        var command = new CreateSolicitudCommand(
-            Guid.NewGuid(),
-            user.Id,
-            asesorUser.Id,
-            1,
-            "Test");
-
-        await _fixture.CommandHandler.Handle(command, default);
-
-        _fixture
-            .VerifyNoDomainNotification()
-            .VerifyCommit()
-            .VerifyRaisedEvent<SolicitudCreatedEvent>(x =>
-                x.AggregateId == command.AggregateId &&
-                x.AsesorUserId == command.AsesorUserId &&
-                x.AsesoradoUserId == command.AsesoradoUserId &&
-                x.NumeroTesis == command.NumeroTesis &&
-                x.Mensaje == command.Mensaje);
-    }
-
-    [Fact]
-    public async Task Should_Create_Solicitud_Asesor_Permissions_Admin()
-    {
-        _fixture.SetupCurrentUser();
-        var user = _fixture.SetupUserWithRole(Enums.UserRole.User);
-        var asesorUser = _fixture.SetupUserWithRole(Enums.UserRole.Admin);
-        var command = new CreateSolicitudCommand(
-            Guid.NewGuid(),
-            user.Id,
-            asesorUser.Id,
-            1,
-            "Test");
-
-        await _fixture.CommandHandler.Handle(command, default);
-
-        _fixture
-            .VerifyNoDomainNotification()
-            .VerifyCommit()
-            .VerifyRaisedEvent<SolicitudCreatedEvent>(x =>
-                x.AggregateId == command.AggregateId &&
-                x.AsesorUserId == command.AsesorUserId &&
-                x.AsesoradoUserId == command.AsesoradoUserId &&
-                x.NumeroTesis == command.NumeroTesis &&
-                x.Mensaje == command.Mensaje);
+                DomainErrorCodes.Cita.UserMissingAsesoradoRole,
+                $"The user with Id {command.AsesoradoUserId} does not have the required role of 'User'");
     }
 }

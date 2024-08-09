@@ -13,18 +13,8 @@ public sealed class CreateSolicitudCommandTestFixture : CommandHandlerFixtureBas
 {
     public CreateSolicitudCommandHandler CommandHandler { get; }
 
-    private ISolicitudRepository SolicitudRepository { get; }
-    private IUserRepository UserRepository { get; }
-    private IOptionsSnapshot<AsesoriaSettings> AsesoriaSettings { get; }
-    private IUserNotifications UserNotifications { get; }
-
     public CreateSolicitudCommandTestFixture()
     {
-        SolicitudRepository = Substitute.For<ISolicitudRepository>();
-        UserRepository = Substitute.For<IUserRepository>();
-        AsesoriaSettings = Substitute.For<IOptionsSnapshot<AsesoriaSettings>>();
-        UserNotifications = Substitute.For<IUserNotifications>();
-
         CommandHandler = new CreateSolicitudCommandHandler(
             Bus,
             UnitOfWork,
@@ -34,38 +24,6 @@ public sealed class CreateSolicitudCommandTestFixture : CommandHandlerFixtureBas
             AsesoriaSettings,
             UserNotifications,
             User);
-    }
-
-    public void SetupCurrentUser()
-    {
-        User.GetUserRole().Returns(UserRole.User);
-    }
-
-    public Entities.User SetupUserWithRole(UserRole role)
-    {
-        var user = new Entities.User(
-            Guid.NewGuid(),
-            Guid.NewGuid(),
-            Guid.NewGuid(),
-            Guid.NewGuid(),
-            "max@mustermann.com",
-            "Max",
-            "Mustermann",
-            "Password",
-            "123456789",
-            "0123456789",
-            role);
-
-        UserRepository
-            .GetByIdAsync(Arg.Is<Guid>(y => y == user.Id))
-            .Returns(user);
-
-        return user;
-    }
-
-    public void SetupUserAdmin()
-    {
-        User.GetUserRole().Returns(UserRole.Admin);
     }
 
     public void SetupExistingSolicitud(Guid id)

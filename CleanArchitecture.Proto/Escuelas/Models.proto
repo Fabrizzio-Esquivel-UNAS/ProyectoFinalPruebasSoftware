@@ -15,3 +15,20 @@ message GetEscuelasByIdsResult {
 message GetEscuelasByIdsRequest {
   repeated string ids = 1;
 }
+
+message GetEscuelasByIdsRequest {
+  repeated string Ids = 1;
+}
+
+message EscuelaProto {
+  string Id = 1;
+  string Nombre = 2;
+}
+
+message GetEscuelasByIdsResponse {
+  repeated EscuelaProto Escuelas = 1;
+}
+
+service EscuelasApi {
+  rpc GetByIds(GetEscuelasByIdsRequest) returns (GetEscuelasByIdsResponse);
+}

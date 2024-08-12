@@ -2,14 +2,14 @@ using CleanArchitecture.Domain.Constants;
 using CleanArchitecture.Domain.Errors;
 using FluentValidation;
 
-namespace CleanArchitecture.Domain.Commands.Facultades.CreateFacultad;
+namespace CleanArchitecture.Domain.Commands.Facultades.UpdateFacultad;
 
-public sealed class CreateFacultadCommandValidation : AbstractValidator<CreateFacultadCommand>
+public sealed class UpdateFacultadesCommandValidation : AbstractValidator<UpdateFacultadesCommand>
 {
-    public CreateFacultadCommandValidation()
+    public UpdateFacultadesCommandValidation()
     {
         AddRuleForId();
-        AddRuleForName();
+        AddRuleForNombre();
     }
 
     private void AddRuleForId()
@@ -20,7 +20,7 @@ public sealed class CreateFacultadCommandValidation : AbstractValidator<CreateFa
             .WithMessage("Facultad id may not be empty");
     }
 
-    private void AddRuleForName()
+    private void AddRuleForNombre()
     {
         RuleFor(cmd => cmd.Nombre)
             .NotEmpty()

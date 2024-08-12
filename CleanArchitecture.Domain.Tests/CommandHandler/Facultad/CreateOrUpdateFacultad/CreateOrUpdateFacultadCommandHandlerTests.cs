@@ -18,7 +18,7 @@ public sealed class CreateOrUpdateFacultadCommandHandlerTests
     {
         var facultad = _fixture.SetupFacultad();
 
-        var command = new CreateFacultadCommand(
+        var command = new CreateFacultadesCommand(
             Guid.NewGuid(),
             facultad.Nombre);
 
@@ -33,7 +33,7 @@ public sealed class CreateOrUpdateFacultadCommandHandlerTests
     [Fact]
     public async Task Should_Not_Create_Already_Existing_Facultad()
     {
-        var command = new CreateFacultadCommand(
+        var command = new CreateFacultadesCommand(
             Guid.NewGuid(),
             "Nombre de la Facultad");
 

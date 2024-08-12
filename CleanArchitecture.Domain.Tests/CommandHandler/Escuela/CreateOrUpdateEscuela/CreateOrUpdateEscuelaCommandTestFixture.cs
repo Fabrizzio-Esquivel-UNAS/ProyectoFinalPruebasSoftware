@@ -7,14 +7,14 @@ namespace CleanArchitecture.Domain.Tests.CommandHandler.Escuela.CreateEscuela;
 
 public sealed class CreateOrUpdateEscuelaCommandTestFixture : CommandHandlerFixtureBase
 {
-    public CreateEscuelaCommandHandler CommandHandler { get; }
+    public CreateEscuelasCommandHandler CommandHandler { get; }
     public IEscuelaRepository EscuelaRepository { get; }
 
     public CreateOrUpdateEscuelaCommandTestFixture()
     {
         EscuelaRepository = Substitute.For<IEscuelaRepository>();
 
-        CommandHandler = new CreateEscuelaCommandHandler(
+        CommandHandler = new CreateEscuelasCommandHandler(
             Bus,
             UnitOfWork,
             NotificationHandler,

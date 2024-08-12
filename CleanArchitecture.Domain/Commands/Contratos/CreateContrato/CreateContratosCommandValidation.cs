@@ -2,11 +2,11 @@
 using CleanArchitecture.Domain.Errors;
 using FluentValidation;
 
-namespace CleanArchitecture.Domain.Commands.Contratos.UpdateContrato;
+namespace CleanArchitecture.Domain.Commands.Contratos.CreateContrato;
 
-public sealed class UpdateContratoCommandValidation : AbstractValidator<UpdateContratoCommand>
+public sealed class CreateContratosCommandValidation : AbstractValidator<CreateContratosCommand>
 {
-    public UpdateContratoCommandValidation()
+    public CreateContratosCommandValidation()
     {
         AddRuleForId();
     }

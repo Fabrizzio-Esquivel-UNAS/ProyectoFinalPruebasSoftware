@@ -2,13 +2,13 @@ using System;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.CreateFacultad;
 
-public sealed class CreateFacultadCommand : CommandBase
+public sealed class CreateFacultadesCommand : CommandBase
 {
-    private static readonly CreateFacultadCommandValidation s_validation = new();
+    private static readonly CreateFacultadesCommandValidation s_validation = new();
 
     public string Nombre { get; }
 
-    public CreateFacultadCommand(Guid facultadId, string nombre) : base(facultadId)
+    public CreateFacultadesCommand(Guid facultadId, string nombre) : base(facultadId)
     {
         Nombre = nombre;
     }

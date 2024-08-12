@@ -7,14 +7,14 @@ namespace CleanArchitecture.Domain.Tests.CommandHandler.Facultad.CreateFacultad;
 
 public sealed class CreateOrUpdateFacultadCommandTestFixture : CommandHandlerFixtureBase
 {
-    public CreateFacultadCommandHandler CommandHandler { get; }
+    public CreateFacultadesCommandHandler CommandHandler { get; }
     public IFacultadRepository FacultadRepository { get; }
 
     public CreateOrUpdateFacultadCommandTestFixture()
     {
         FacultadRepository = Substitute.For<IFacultadRepository>();
 
-        CommandHandler = new CreateFacultadCommandHandler(
+        CommandHandler = new CreateFacultadesCommandHandler(
             Bus,
             UnitOfWork,
             NotificationHandler,

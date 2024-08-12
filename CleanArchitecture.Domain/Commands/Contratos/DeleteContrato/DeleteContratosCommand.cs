@@ -2,11 +2,11 @@
 
 namespace CleanArchitecture.Domain.Commands.Contratos.DeleteContrato;
 
-public sealed class DeleteContratoCommand : CommandBase
+public sealed class DeleteContratosCommand : CommandBase
 {
-    private static readonly DeleteContratoCommandValidation s_validation = new();
+    private static readonly DeleteContratosCommandValidation s_validation = new();
 
-    public DeleteContratoCommand(Guid contratoId) : base(contratoId)
+    public DeleteContratosCommand(Guid contratoId) : base(contratoId)
     {
     }
 

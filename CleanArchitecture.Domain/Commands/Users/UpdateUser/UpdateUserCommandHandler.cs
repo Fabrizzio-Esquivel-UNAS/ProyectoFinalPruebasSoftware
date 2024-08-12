@@ -125,7 +125,7 @@ public sealed class UpdateUserCommandHandler : CommandHandlerBase,
                 var contrato = await _contratoRepository.GetBySolicitudIdAsync(solicitud.Id);
                 if (contrato != null && contrato.FechaFinal==null)
                 {
-                    await Bus.SendCommandAsync(new UpdateContratoCommand(contrato.Id));
+                    await Bus.SendCommandAsync(new UpdateContratosCommand(contrato.Id));
                 }
             }
         } else if (user.Role==UserRole.Coordinador && request.Role!=UserRole.Coordinador) {

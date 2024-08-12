@@ -7,7 +7,7 @@ namespace CleanArchitecture.Domain.Tests.CommandHandler.Contrato.CreateContrato;
 
 public sealed class CreateOrUpdateContratoCommandTestFixture : CommandHandlerFixtureBase
 {
-    public CreateContratoCommandHandler CommandHandler { get; }
+    public CreateContratosCommandHandler CommandHandler { get; }
     public IContratoRepository ContratoRepository { get; }
     public ISolicitudRepository SolicitudRepository { get; }
 
@@ -16,7 +16,7 @@ public sealed class CreateOrUpdateContratoCommandTestFixture : CommandHandlerFix
         ContratoRepository = Substitute.For<IContratoRepository>();
         SolicitudRepository = Substitute.For<ISolicitudRepository>();
 
-        CommandHandler = new CreateContratoCommandHandler(
+        CommandHandler = new CreateContratosCommandHandler(
             Bus,
             UnitOfWork,
             NotificationHandler,

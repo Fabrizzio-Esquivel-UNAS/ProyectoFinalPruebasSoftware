@@ -63,7 +63,7 @@ public sealed class UpdateSolicitudCommandHandler : CommandHandlerBase,
 
         if (solicitud.Estado == SolicitudStatus.Pendiente && request.Estado == SolicitudStatus.Aceptado)
         {
-            await Bus.SendCommandAsync(new CreateContratoCommand(
+            await Bus.SendCommandAsync(new CreateContratosCommand(
                 Guid.NewGuid(),
                 solicitud.Id));
 

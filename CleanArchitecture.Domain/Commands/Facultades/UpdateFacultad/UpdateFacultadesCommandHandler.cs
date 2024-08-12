@@ -5,55 +5,55 @@ using CleanArchitecture.Domain.Errors;
 using CleanArchitecture.Domain.Interfaces;
 using CleanArchitecture.Domain.Interfaces.Repositories;
 using CleanArchitecture.Domain.Notifications;
-using CleanArchitecture.Shared.Events.Escuela;
+using CleanArchitecture.Shared.Events.Facultad;
 using MediatR;
 
-namespace CleanArchitecture.Domain.Commands.Escuelas.UpdateEscuela;
+namespace CleanArchitecture.Domain.Commands.Facultades.UpdateFacultad;
 
-public sealed class UpdateEscuelaCommandHandler : CommandHandlerBase,
-    IRequestHandler<UpdateEscuelaCommand>
+public sealed class UpdateFacultadesCommandHandler : CommandHandlerBase,
+    IRequestHandler<UpdateFacultadesCommand>
 {
-    private readonly IEscuelaRepository _escuelaRepository;
+    private readonly IFacultadRepository _facultadRepository;
     private readonly IUser _user;
 
-    public UpdateEscuelaCommandHandler(
+    public UpdateFacultadesCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
-        IEscuelaRepository escuelaRepository,
+        IFacultadRepository facultadRepository,
         IUser user) : base(bus, unitOfWork, notifications)
     {
-        _escuelaRepository = escuelaRepository;
+        _facultadRepository = facultadRepository;
         _user = user;
     }
 
-    public async Task Handle(UpdateEscuelaCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateFacultadesCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {
             return;
         }
 
-        var escuela = await _escuelaRepository.GetByIdAsync(request.AggregateId);
+        var facultad = await _facultadRepository.GetByIdAsync(request.AggregateId);
 
-        if (escuela is null)
+        if (facultad is null)
         {
             await NotifyAsync(
                 new DomainNotification(
                     request.MessageType,
-                    $"There is no escuela with Id {request.AggregateId}",
+                    $"There is no facultad with Id {request.AggregateId}",
                     ErrorCodes.ObjectNotFound));
 
             return;
         }
 
-        escuela.SetName(request.Nombre);
+        facultad.SetName(request.Nombre);
 
         if (await CommitAsync())
         {
-            await Bus.RaiseEventAsync(new EscuelaUpdatedEvent(
-                escuela.Id,
-                escuela.Nombre));
+            await Bus.RaiseEventAsync(new FacultadUpdatedEvent(
+                facultad.Id,
+                facultad.Nombre));
         }
     }
 }

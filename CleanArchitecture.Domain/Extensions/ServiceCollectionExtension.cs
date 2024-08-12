@@ -77,19 +77,19 @@ public static class ServiceCollectionExtension
         services.AddScoped<IRequestHandler<DeleteCalendarioCommand>, DeleteCalendarioCommandHandler>();
 
         // Contrato
-        services.AddScoped<IRequestHandler<CreateContratoCommand>, CreateContratoCommandHandler>();
-        services.AddScoped<IRequestHandler<UpdateContratoCommand>, UpdateContratoCommandHandler>();
-        services.AddScoped<IRequestHandler<DeleteContratoCommand>, DeleteContratoCommandHandler>();
+        services.AddScoped<IRequestHandler<CreateContratosCommand>, CreateContratosCommandHandler>();
+        services.AddScoped<IRequestHandler<UpdateContratosCommand>, UpdateContratosCommandHandler>();
+        services.AddScoped<IRequestHandler<DeleteContratosCommand>, DeleteContratosCommandHandler>();
 
         // Facultad
-        services.AddScoped<IRequestHandler<CreateFacultadCommand>, CreateFacultadCommandHandler>();
-        services.AddScoped<IRequestHandler<UpdateFacultadCommand>, UpdateFacultadCommandHandler>();
-        services.AddScoped<IRequestHandler<DeleteFacultadCommand>, DeleteFacultadCommandHandler>();
+        services.AddScoped<IRequestHandler<CreateFacultadesCommand>, CreateFacultadesCommandHandler>();
+        services.AddScoped<IRequestHandler<UpdateFacultadesCommand>, UpdateFacultadesCommandHandler>();
+        services.AddScoped<IRequestHandler<DeleteFacultadesCommand>, DeleteFacultadesCommandHandler>();
 
         // Escuela
-        services.AddScoped<IRequestHandler<CreateEscuelaCommand>, CreateEscuelaCommandHandler>();
-        services.AddScoped<IRequestHandler<UpdateEscuelaCommand>, UpdateEscuelaCommandHandler>();
-        services.AddScoped<IRequestHandler<DeleteEscuelaCommand>, DeleteEscuelaCommandHandler>();
+        services.AddScoped<IRequestHandler<CreateEscuelasCommand>, CreateEscuelasCommandHandler>();
+        services.AddScoped<IRequestHandler<UpdateEscuelasCommand>, UpdateEscuelasCommandHandler>();
+        services.AddScoped<IRequestHandler<DeleteEscuelasCommand>, DeleteEscuelasCommandHandler>();
 
         // Grupoinvestigacion
         services.AddScoped<IRequestHandler<CreateGrupoInvestigacionCommand>, CreateGrupoInvestigacionCommandHandler>();

@@ -18,7 +18,7 @@ public sealed class CreateOrUpdateEscuelaCommandHandlerTests
     {
         var escuela = _fixture.SetupEscuela();
 
-        var command = new CreateEscuelaCommand(
+        var command = new CreateEscuelasCommand(
             Guid.NewGuid(),
             escuela.FacultadId,
             escuela.Nombre);
@@ -34,7 +34,7 @@ public sealed class CreateOrUpdateEscuelaCommandHandlerTests
     [Fact]
     public async Task Should_Not_Create_Already_Existing_Escuela()
     {
-        var command = new CreateEscuelaCommand(
+        var command = new CreateEscuelasCommand(
             Guid.NewGuid(),
             Guid.NewGuid(),
             "Nombre de la Escuela");

@@ -11,14 +11,14 @@ using MediatR;
 
 namespace CleanArchitecture.Domain.Commands.Escuelas.DeleteEscuela;
 
-public sealed class DeleteEscuelaCommandHandler : CommandHandlerBase,
-    IRequestHandler<DeleteEscuelaCommand>
+public sealed class DeleteEscuelasCommandHandler : CommandHandlerBase,
+    IRequestHandler<DeleteEscuelasCommand>
 {
     private readonly IEscuelaRepository _escuelaRepository;
     private readonly IUser _user;
     private readonly IUserRepository _userRepository;
 
-    public DeleteEscuelaCommandHandler(
+    public DeleteEscuelasCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -31,7 +31,7 @@ public sealed class DeleteEscuelaCommandHandler : CommandHandlerBase,
         _user = user;
     }
 
-    public async Task Handle(DeleteEscuelaCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DeleteEscuelasCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {

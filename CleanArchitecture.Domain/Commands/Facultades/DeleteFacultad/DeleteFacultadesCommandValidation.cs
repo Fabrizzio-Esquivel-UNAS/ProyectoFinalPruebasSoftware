@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.DeleteFacultad;
 
-public sealed class DeleteFacultadCommandValidation : AbstractValidator<DeleteFacultadCommand>
+public sealed class DeleteFacultadesCommandValidation : AbstractValidator<DeleteFacultadesCommand>
 {
-    public DeleteFacultadCommandValidation()
+    public DeleteFacultadesCommandValidation()
     {
         AddRuleForId();
     }

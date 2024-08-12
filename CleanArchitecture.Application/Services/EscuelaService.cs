@@ -32,7 +32,7 @@ public sealed class EscuelasService : IEscuelasService
     {
         var escuelaId = Guid.NewGuid();
 
-        await _bus.SendCommandAsync(new CreateEscuelaCommand(
+        await _bus.SendCommandAsync(new CreateEscuelasCommand(
             escuelaId,
             escuela.FacultadId,
             escuela.Nombre));
@@ -42,14 +42,14 @@ public sealed class EscuelasService : IEscuelasService
 
     public async Task UpdateEscuelasAsync(UpdateEscuelaViewModel escuela)
     {
-        await _bus.SendCommandAsync(new UpdateEscuelaCommand(
+        await _bus.SendCommandAsync(new UpdateEscuelasCommand(
             escuela.Id,
             escuela.Nombre));
     }
 
     public async Task DeleteEscuelasAsync(Guid escuelaId)
     {
-        await _bus.SendCommandAsync(new DeleteEscuelaCommand(escuelaId));
+        await _bus.SendCommandAsync(new DeleteEscuelasCommand(escuelaId));
     }
 
     public async Task<EscuelaViewModel?> GetEscuelasByIdAsync(Guid escuelaId)

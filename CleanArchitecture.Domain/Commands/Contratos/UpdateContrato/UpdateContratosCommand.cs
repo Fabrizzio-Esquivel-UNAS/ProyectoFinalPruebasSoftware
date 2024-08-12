@@ -2,13 +2,13 @@
 
 namespace CleanArchitecture.Domain.Commands.Contratos.UpdateContrato;
 
-public sealed class UpdateContratoCommand : CommandBase
+public sealed class UpdateContratosCommand : CommandBase
 {
-    private static readonly UpdateContratoCommandValidation s_validation = new();
+    private static readonly UpdateContratosCommandValidation s_validation = new();
 
     public Guid ContratoId { get; }
 
-    public UpdateContratoCommand(
+    public UpdateContratosCommand(
         Guid contratoId) : base(contratoId)
     {
         ContratoId = contratoId;

@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CleanArchitecture.Domain.Commands.Escuelas.DeleteEscuela;
 
-public sealed class DeleteEscuelaCommandValidation : AbstractValidator<DeleteEscuelaCommand>
+public sealed class DeleteEscuelasCommandValidation : AbstractValidator<DeleteEscuelasCommand>
 {
-    public DeleteEscuelaCommandValidation()
+    public DeleteEscuelasCommandValidation()
     {
         AddRuleForId();
     }

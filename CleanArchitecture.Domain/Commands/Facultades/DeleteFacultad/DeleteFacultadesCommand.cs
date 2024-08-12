@@ -2,11 +2,11 @@ using System;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.DeleteFacultad;
 
-public sealed class DeleteFacultadCommand : CommandBase
+public sealed class DeleteFacultadesCommand : CommandBase
 {
-    private static readonly DeleteFacultadCommandValidation s_validation = new();
+    private static readonly DeleteFacultadesCommandValidation s_validation = new();
 
-    public DeleteFacultadCommand(Guid facultadId) : base(facultadId)
+    public DeleteFacultadesCommand(Guid facultadId) : base(facultadId)
     {
     }
 

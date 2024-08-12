@@ -11,13 +11,13 @@ using MediatR;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.CreateFacultad;
 
-public sealed class CreateFacultadCommandHandler : CommandHandlerBase,
-    IRequestHandler<CreateFacultadCommand>
+public sealed class CreateFacultadesCommandHandler : CommandHandlerBase,
+    IRequestHandler<CreateFacultadesCommand>
 {
     private readonly IFacultadRepository _facultadRepository;
     private readonly IUser _user;
 
-    public CreateFacultadCommandHandler(
+    public CreateFacultadesCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -28,7 +28,7 @@ public sealed class CreateFacultadCommandHandler : CommandHandlerBase,
         _user = user;
     }
 
-    public async Task Handle(CreateFacultadCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CreateFacultadesCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {

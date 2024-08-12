@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace CleanArchitecture.Domain.Commands.Escuelas.UpdateEscuela;
 
-public sealed class UpdateEscuelaCommandValidation : AbstractValidator<UpdateEscuelaCommand>
+public sealed class UpdateEscuelasCommandValidation : AbstractValidator<UpdateEscuelasCommand>
 {
-    public UpdateEscuelaCommandValidation()
+    public UpdateEscuelasCommandValidation()
     {
         AddRuleForId();
         AddRuleForNombre();

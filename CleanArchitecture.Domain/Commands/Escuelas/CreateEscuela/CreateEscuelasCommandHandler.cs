@@ -11,13 +11,13 @@ using MediatR;
 
 namespace CleanArchitecture.Domain.Commands.Escuelas.CreateEscuela;
 
-public sealed class CreateEscuelaCommandHandler : CommandHandlerBase,
-    IRequestHandler<CreateEscuelaCommand>
+public sealed class CreateEscuelasCommandHandler : CommandHandlerBase,
+    IRequestHandler<CreateEscuelasCommand>
 {
     private readonly IEscuelaRepository _escuelaRepository;
     private readonly IUser _user;
 
-    public CreateEscuelaCommandHandler(
+    public CreateEscuelasCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -28,7 +28,7 @@ public sealed class CreateEscuelaCommandHandler : CommandHandlerBase,
         _user = user;
     }
 
-    public async Task Handle(CreateEscuelaCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CreateEscuelasCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {

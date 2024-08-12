@@ -2,13 +2,13 @@ using System;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.UpdateFacultad;
 
-public sealed class UpdateFacultadCommand : CommandBase
+public sealed class UpdateFacultadesCommand : CommandBase
 {
-    private static readonly UpdateFacultadCommandValidation s_validation = new();
+    private static readonly UpdateFacultadesCommandValidation s_validation = new();
 
     public string Nombre { get; }
 
-    public UpdateFacultadCommand(Guid facultadId, string nombre) : base(facultadId)
+    public UpdateFacultadesCommand(Guid facultadId, string nombre) : base(facultadId)
     {
         Nombre = nombre;
     }

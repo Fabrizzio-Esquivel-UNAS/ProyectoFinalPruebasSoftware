@@ -8,21 +8,8 @@ message Escuela {
   bool isDeleted = 3;
 }
 
-message GetEscuelasByIdsResult {
-  repeated Escuela escuelas = 1;
-}
-
 message GetEscuelasByIdsRequest {
   repeated string ids = 1;
-}
-
-message GetEscuelasByIdsRequest {
-  repeated string Ids = 1;
-}
-
-message EscuelaProto {
-  string Id = 1;
-  string Nombre = 2;
 }
 
 message GetEscuelasByIdsResponse {

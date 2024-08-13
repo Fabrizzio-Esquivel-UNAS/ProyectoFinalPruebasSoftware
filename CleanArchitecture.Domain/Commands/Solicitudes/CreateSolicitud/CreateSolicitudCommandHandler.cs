@@ -71,17 +71,6 @@ public sealed class CreateSolicitudCommandHandler : CommandHandlerBase,
             return;
         }
 
-        //var existingSolicitudes = _solicitudRepository.GetByFechaCreacionAsync(DateTime.Today, DateTime.Today.AddDays(1));
-        //if (existingSolicitudes.Count() >= _asesoriaSettings.Value.SolicitudesMaximasAlDiaPorAsesor)
-        //{
-        //    await NotifyAsync(
-        //        new DomainNotification(
-        //            request.MessageType,
-        //            $"The maximum number of Solicitudes per day for this Asesor has been reached.",
-        //            ErrorCodes.UnexpectedError));
-        //    return;
-        //}
-
         var asesorUser = await _userRepository.GetByIdAsync(request.AsesorUserId);
         if (asesorUser is null)
         {
@@ -98,7 +87,7 @@ public sealed class CreateSolicitudCommandHandler : CommandHandlerBase,
                 new DomainNotification(
                     request.MessageType,
                     $"The user with Id {request.AsesorUserId} does not have the permissions of 'Asesor' role",
-                    DomainErrorCodes.Cita.UserMissingAsesorRole));
+                    ErrorCodes.InsufficientPermissions));
             return;
         }
 
@@ -108,7 +97,7 @@ public sealed class CreateSolicitudCommandHandler : CommandHandlerBase,
             await NotifyAsync(
                 new DomainNotification(
                     request.MessageType,
-                    $"There is no user with Id {request.AsesorUserId}",
+                    $"There is no user with Id {request.AsesoradoUserId}",
                     ErrorCodes.ObjectNotFound));
             return;
         }

@@ -15,20 +15,22 @@ public sealed class CreateOrUpdateCitaCommandHandlerTests
 {
     private readonly CreateOrUpdateCitaCommandTestFixture _fixture = new();
 
-    /*
     [Fact]
     public async Task Should_Create_Cita()
     {
-        var cita = _fixture.SetupCita();
-        _fixture.SetupUserWithRole(cita.AsesorUserId, UserRole.Asesor);
-        _fixture.SetupUserWithRole(cita.AsesoradoUserId, UserRole.Asesorado);
+        var asesorUser = _fixture.SetupUserWithRole(UserRole.Asesor);
+        var asesoradoUser = _fixture.SetupUserWithRole(UserRole.Asesorado);
+        var solicitud = _fixture.SetupSolicitud(asesoradoUser.Id, asesoradoUser.Id);
+        var contrato = _fixture.SetupContrato(solicitud.Id, DateTime.UtcNow, DateTime.UtcNow.AddDays(30));
 
-        var command = new CreateCitaCommand(
+        var command = new CreateOrUpdateCitaCommand(
             Guid.NewGuid(),
             Guid.NewGuid().ToString(),
-            cita.AsesorUserId,
-            cita.AsesoradoUserId,
-            CitaEstado.Inasistido);
+            asesorUser.Id,
+            asesoradoUser.Email,
+            DateTime.UtcNow,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
 
         await _fixture.CommandHandler.Handle(command, default);
 
@@ -37,7 +39,6 @@ public sealed class CreateOrUpdateCitaCommandHandlerTests
             .VerifyCommit()
             .VerifyRaisedEvent<CitaCreatedEvent>(x => x.AggregateId == command.AggregateId);
     }
-    */
 
     [Fact]
     public async Task Should_Not_Create_Already_Existing_Cita()
@@ -63,53 +64,77 @@ public sealed class CreateOrUpdateCitaCommandHandlerTests
                 DomainErrorCodes.Cita.AlreadyExists,
                 $"There is already a cita with Id {command.AggregateId}");
     }
-    /*
-    [Fact]
-    public async Task Should_Not_Create_Cita_Asesor_Does_Not_Exist()
-    {
-        var cita = _fixture.SetupCita();
-        var user = _fixture.SetupUser(cita.AsesoradoUserId, UserRole.Asesorado, "max@mustermann.com");
 
-        var command = new CreateCitaCommand(
+    [Fact]
+    public async Task Should_Not_Create_Cita_Fecha_Before_Contrato()
+    {
+        var asesorUser = _fixture.SetupUserWithRole(UserRole.Asesor);
+        var asesoradoUser = _fixture.SetupUserWithRole(UserRole.Asesorado);
+        var solicitud = _fixture.SetupSolicitud(asesoradoUser.Id, asesoradoUser.Id);
+        var contrato = _fixture.SetupContrato(solicitud.Id, DateTime.UtcNow, DateTime.UtcNow.AddDays(30));
+
+        var command = new CreateOrUpdateCitaCommand(
             Guid.NewGuid(),
             Guid.NewGuid().ToString(),
-            Guid.NewGuid(),
-            user.Email,
-            CitaEstado.Inasistido);
+            asesorUser.Id,
+            asesoradoUser.Email,
+            DateTime.UtcNow.Subtract(TimeSpan.FromDays(1)),
+            DateTime.UtcNow,
+            DateTime.UtcNow);
 
         await _fixture.CommandHandler.Handle(command, default);
 
         _fixture
             .VerifyNoCommit()
-            .VerifyNoRaisedEvent<CitaCreatedEvent>()
-            .VerifyAnyDomainNotification()
-            .VerifyExistingNotification(
-                ErrorCodes.ObjectNotFound,
-                $"There is no user with Id {command.AsesorUserId}");
+            .VerifyNoRaisedEvent<CitaCreatedEvent>();
     }
 
     [Fact]
-    public async Task Should_Not_Create_Cita_Asesorado_Does_Not_Exist()
+    public async Task Should_Not_Create_Cita_Fecha_After_Contrato()
     {
-        var cita = _fixture.SetupCita();
-        var user = _fixture.SetupUser(cita.AsesoradoUserId, UserRole.Asesorado, "max@mustermann.com");
+        var asesorUser = _fixture.SetupUserWithRole(UserRole.Asesor);
+        var asesoradoUser = _fixture.SetupUserWithRole(UserRole.Asesorado);
+        var solicitud = _fixture.SetupSolicitud(asesoradoUser.Id, asesoradoUser.Id);
+        var contrato = _fixture.SetupContrato(solicitud.Id, DateTime.UtcNow, DateTime.UtcNow.AddDays(30));
 
-        var command = new CreateCitaCommand(
-            cita.Id,
-            Guid.NewGuid().ToString(),
+        var command = new CreateOrUpdateCitaCommand(
             Guid.NewGuid(),
-            cita.AsesoradoEmail,
-            CitaEstado.Inasistido);
+            Guid.NewGuid().ToString(),
+            asesorUser.Id,
+            asesoradoUser.Email,
+            DateTime.UtcNow.AddDays(31),
+            DateTime.UtcNow,
+            DateTime.UtcNow);
 
         await _fixture.CommandHandler.Handle(command, default);
 
         _fixture
             .VerifyNoCommit()
-            .VerifyNoRaisedEvent<CitaCreatedEvent>()
-            .VerifyAnyDomainNotification()
-            .VerifyExistingNotification(
-                ErrorCodes.ObjectNotFound,
-                $"There is no user with Email {command.AsesoradoEmail}");
+            .VerifyNoRaisedEvent<CitaCreatedEvent>();
     }
-    */
+
+    [Fact]
+    public async Task Should_Create_Cita_Fecha_During_Contracto()
+    {
+        var asesorUser = _fixture.SetupUserWithRole(UserRole.Asesor);
+        var asesoradoUser = _fixture.SetupUserWithRole(UserRole.Asesorado);
+        var solicitud = _fixture.SetupSolicitud(asesoradoUser.Id, asesoradoUser.Id);
+        var contrato = _fixture.SetupContrato(solicitud.Id, DateTime.UtcNow, DateTime.UtcNow.AddDays(30));
+
+        var command = new CreateOrUpdateCitaCommand(
+            Guid.NewGuid(),
+            Guid.NewGuid().ToString(),
+            asesorUser.Id,
+            asesoradoUser.Email,
+            DateTime.UtcNow.AddDays(15),
+            DateTime.UtcNow,
+            DateTime.UtcNow);
+
+        await _fixture.CommandHandler.Handle(command, default);
+
+        _fixture
+            .VerifyNoDomainNotification()
+            .VerifyCommit()
+            .VerifyRaisedEvent<CitaCreatedEvent>(x => x.AggregateId == command.AggregateId);
+    }
 }

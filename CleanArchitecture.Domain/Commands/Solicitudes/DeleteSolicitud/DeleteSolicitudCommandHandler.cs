@@ -36,6 +36,17 @@ public sealed class DeleteSolicitudCommandHandler : CommandHandlerBase,
             return;
         }
 
+        if (_user.GetUserRole() != UserRole.Admin)
+        {
+            await NotifyAsync(
+                new DomainNotification(
+                    request.MessageType,
+                    $"No permission to delete solicitud {request.AggregateId}",
+                    ErrorCodes.InsufficientPermissions));
+
+            return;
+        }
+
         var solicitud = await _solicitudRepository.GetByIdAsync(request.AggregateId);
 
         if (solicitud is null)

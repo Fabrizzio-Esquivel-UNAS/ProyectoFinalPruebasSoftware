@@ -63,7 +63,7 @@ public sealed class UpdateSolicitudCommandHandler : CommandHandlerBase,
 
         if (solicitud.Estado == SolicitudStatus.Pendiente && request.Estado == SolicitudStatus.Aceptado)
         {
-            await Bus.SendCommandAsync(new CreateContratoCommand(
+            await Bus.SendCommandAsync(new CreateContratosCommand(
                 Guid.NewGuid(),
                 solicitud.Id));
 
@@ -88,9 +88,10 @@ public sealed class UpdateSolicitudCommandHandler : CommandHandlerBase,
 
         if (await CommitAsync())
         {
+            var solicitudEstado = (int)solicitud.Estado;
             await Bus.RaiseEventAsync(new SolicitudUpdatedEvent(
                 solicitud.Id,
-                (int)solicitud.Estado));
+                solicitudEstado));
         }
     }
 }

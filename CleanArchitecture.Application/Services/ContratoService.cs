@@ -32,7 +32,7 @@ public sealed class ContratoService : IContratoService
     {
         var contratoId = Guid.NewGuid();
 
-        await _bus.SendCommandAsync(new CreateContratoCommand(
+        await _bus.SendCommandAsync(new CreateContratosCommand(
             contratoId,
             contrato.SolicitudId));
 
@@ -41,13 +41,13 @@ public sealed class ContratoService : IContratoService
 
     public async Task UpdateContratoAsync(UpdateContratoViewModel contrato)
     {
-        await _bus.SendCommandAsync(new UpdateContratoCommand(
+        await _bus.SendCommandAsync(new UpdateContratosCommand(
             contrato.Id));
     }
 
     public async Task DeleteContratoAsync(Guid contratoId)
     {
-        await _bus.SendCommandAsync(new DeleteContratoCommand(contratoId));
+        await _bus.SendCommandAsync(new DeleteContratosCommand(contratoId));
     }
 
     public async Task<ContratoViewModel?> GetContratoByIdAsync(Guid contratoId)

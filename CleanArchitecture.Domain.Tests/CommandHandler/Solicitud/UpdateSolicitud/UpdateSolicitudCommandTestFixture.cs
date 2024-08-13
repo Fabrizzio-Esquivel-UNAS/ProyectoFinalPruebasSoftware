@@ -34,7 +34,7 @@ public sealed class UpdateSolicitudCommandTestFixture : CommandHandlerFixtureBas
         SolicitudRepository
             .GetByIdAsync(Arg.Is<Guid>(x => x == id))
             .Returns(new Entities.Solicitud(
-                Guid.NewGuid(),
+                id,
                 Guid.NewGuid(),
                 Guid.NewGuid(),
                 1,

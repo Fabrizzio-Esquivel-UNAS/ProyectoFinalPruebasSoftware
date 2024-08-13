@@ -13,12 +13,12 @@ using Microsoft.VisualBasic;
 
 namespace CleanArchitecture.Domain.Commands.Contratos.CreateContrato;
 
-public sealed class CreateContratoCommandHandler : CommandHandlerBase,
-    IRequestHandler<CreateContratoCommand>
+public sealed class CreateContratosCommandHandler : CommandHandlerBase,
+    IRequestHandler<CreateContratosCommand>
 {
     private readonly IContratoRepository _contratoRepository;
 
-    public CreateContratoCommandHandler(
+    public CreateContratosCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -27,7 +27,7 @@ public sealed class CreateContratoCommandHandler : CommandHandlerBase,
         _contratoRepository = contratoRepository;
     }
 
-    public async Task Handle(CreateContratoCommand request, CancellationToken cancellationToken)
+    public async Task Handle(CreateContratosCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {

@@ -2,14 +2,14 @@ using System;
 
 namespace CleanArchitecture.Domain.Commands.Escuelas.CreateEscuela;
 
-public sealed class CreateEscuelaCommand : CommandBase
+public sealed class CreateEscuelasCommand : CommandBase
 {
-    private static readonly CreateEscuelaCommandValidation s_validation = new();
+    private static readonly CreateEscuelasCommandValidation s_validation = new();
 
     public Guid FacultadId { get; }
     public string Nombre { get; }
 
-    public CreateEscuelaCommand(
+    public CreateEscuelasCommand(
         Guid escuelaId,
         Guid facultadId,
         string nombre) : base(escuelaId)

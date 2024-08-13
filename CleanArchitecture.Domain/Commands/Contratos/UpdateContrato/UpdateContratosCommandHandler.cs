@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using CleanArchitecture.Domain.Enums;
@@ -9,14 +9,14 @@ using CleanArchitecture.Domain.Notifications;
 using CleanArchitecture.Shared.Events.Contrato;
 using MediatR;
 
-namespace CleanArchitecture.Domain.Commands.Contratos.DeleteContrato;
+namespace CleanArchitecture.Domain.Commands.Contratos.UpdateContrato;
 
-public sealed class DeleteContratoCommandHandler : CommandHandlerBase,
-    IRequestHandler<DeleteContratoCommand>
+public sealed class UpdateContratosCommandHandler : CommandHandlerBase,
+    IRequestHandler<UpdateContratosCommand>
 {
     private readonly IContratoRepository _contratoRepository;
 
-    public DeleteContratoCommandHandler(
+    public UpdateContratosCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -25,7 +25,7 @@ public sealed class DeleteContratoCommandHandler : CommandHandlerBase,
         _contratoRepository = contratoRepository;
     }
 
-    public async Task Handle(DeleteContratoCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateContratosCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {
@@ -45,11 +45,15 @@ public sealed class DeleteContratoCommandHandler : CommandHandlerBase,
             return;
         }
 
-        _contratoRepository.Remove(contrato);
+        contrato.FechaFinal = DateOnly.FromDateTime(DateTime.UtcNow);
 
         if (await CommitAsync())
         {
-            await Bus.RaiseEventAsync(new ContratoDeletedEvent(contrato.Id));
+            await Bus.RaiseEventAsync(new ContratoUpdatedEvent(
+                contrato.Id,
+                contrato.SolicitudId,
+                contrato.FechaInicio,
+                (DateOnly)contrato.FechaFinal));
         }
     }
 }

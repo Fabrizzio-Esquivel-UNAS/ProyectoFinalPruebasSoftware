@@ -2,14 +2,14 @@
 
 namespace CleanArchitecture.Domain.Commands.Contratos.CreateContrato;
 
-public sealed class CreateContratoCommand : CommandBase
+public sealed class CreateContratosCommand : CommandBase
 {
-    private static readonly CreateContratoCommandValidation s_validation = new();
+    private static readonly CreateContratosCommandValidation s_validation = new();
 
     public Guid ContratoId { get; }
     public Guid SolicitudId { get; }
 
-    public CreateContratoCommand(
+    public CreateContratosCommand(
         Guid contratoId,
         Guid solicitudId) : base(contratoId)
     {

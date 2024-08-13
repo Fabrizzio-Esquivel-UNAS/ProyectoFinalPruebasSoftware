@@ -32,7 +32,7 @@ public sealed class FacultadesService : IFacultadesService
     {
         var facultadId = Guid.NewGuid();
 
-        await _bus.SendCommandAsync(new CreateFacultadCommand(
+        await _bus.SendCommandAsync(new CreateFacultadesCommand(
             facultadId,
             facultad.Nombre));
 
@@ -41,14 +41,14 @@ public sealed class FacultadesService : IFacultadesService
 
     public async Task UpdateFacultadesAsync(UpdateFacultadViewModel facultad)
     {
-        await _bus.SendCommandAsync(new UpdateFacultadCommand(
+        await _bus.SendCommandAsync(new UpdateFacultadesCommand(
             facultad.Id,
             facultad.Nombre));
     }
 
     public async Task DeleteFacultadesAsync(Guid facultadId)
     {
-        await _bus.SendCommandAsync(new DeleteFacultadCommand(facultadId));
+        await _bus.SendCommandAsync(new DeleteFacultadesCommand(facultadId));
     }
 
     public async Task<FacultadViewModel?> GetFacultadesByIdAsync(Guid facultadId)

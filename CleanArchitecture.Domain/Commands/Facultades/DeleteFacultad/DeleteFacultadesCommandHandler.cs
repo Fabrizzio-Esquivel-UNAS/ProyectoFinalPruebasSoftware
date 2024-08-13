@@ -11,14 +11,14 @@ using MediatR;
 
 namespace CleanArchitecture.Domain.Commands.Facultades.DeleteFacultad;
 
-public sealed class DeleteFacultadCommandHandler : CommandHandlerBase,
-    IRequestHandler<DeleteFacultadCommand>
+public sealed class DeleteFacultadesCommandHandler : CommandHandlerBase,
+    IRequestHandler<DeleteFacultadesCommand>
 {
     private readonly IFacultadRepository _facultadRepository;
     private readonly IUser _user;
     private readonly IEscuelaRepository _escuelaRepository;
 
-    public DeleteFacultadCommandHandler(
+    public DeleteFacultadesCommandHandler(
         IMediatorHandler bus,
         IUnitOfWork unitOfWork,
         INotificationHandler<DomainNotification> notifications,
@@ -31,7 +31,7 @@ public sealed class DeleteFacultadCommandHandler : CommandHandlerBase,
         _user = user;
     }
 
-    public async Task Handle(DeleteFacultadCommand request, CancellationToken cancellationToken)
+    public async Task Handle(DeleteFacultadesCommand request, CancellationToken cancellationToken)
     {
         if (!await TestValidityAsync(request))
         {

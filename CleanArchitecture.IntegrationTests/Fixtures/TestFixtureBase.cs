@@ -52,10 +52,20 @@ public class TestFixtureBase : IAsyncLifetime
             Ids.Seed.FacultadId,
             "Admin Escuela"));
 
+        dbContext.GruposInvestigacion.Add(new GrupoInvestigacion(
+            Ids.Seed.GrupoInvestigacionId,
+            "Admin Grupo de Investigacion"));
+
+        dbContext.LineasInvestigacion.Add(new LineaInvestigacion(
+            Ids.Seed.LineaInvestigacionId,
+            Ids.Seed.FacultadId,
+            Ids.Seed.GrupoInvestigacionId,
+            "Admin Linea de Investigacion"));
+
         dbContext.Users.Add(new User(
             Ids.Seed.AdminUserId,
             Ids.Seed.TenantId,
-            Guid.NewGuid(),
+            Ids.Seed.LineaInvestigacionId,
             Ids.Seed.EscuelaId,
             "admin@email.com",
             "Admin",
@@ -68,7 +78,7 @@ public class TestFixtureBase : IAsyncLifetime
         dbContext.Users.Add(new User(
             TestAuthenticationOptions.TestUserId,
             Ids.Seed.TenantId,
-            Guid.NewGuid(),
+            Ids.Seed.LineaInvestigacionId,
             Ids.Seed.EscuelaId,
             TestAuthenticationOptions.Email,
             TestAuthenticationOptions.FirstName,

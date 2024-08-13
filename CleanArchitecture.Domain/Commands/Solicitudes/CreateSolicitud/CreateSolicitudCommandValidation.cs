@@ -12,6 +12,7 @@ public sealed class CreateSolicitudCommandValidation : AbstractValidator<CreateS
         AddRuleForAsesoradoUserId();
         AddRuleForAsesorUserId();
         AddRuleForNumeroTesis();
+        AddRuleForMensaje();
     }
 
     private void AddRuleForId()
@@ -27,21 +28,30 @@ public sealed class CreateSolicitudCommandValidation : AbstractValidator<CreateS
         RuleFor(cmd => cmd.AsesoradoUserId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.User.EmptyId)
-            .WithMessage("Asesorado id may not be empty");
+            .WithMessage("Asesorado user id may not be empty");
     }
+
     private void AddRuleForAsesorUserId()
     {
         RuleFor(cmd => cmd.AsesorUserId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.User.EmptyId)
-            .WithMessage("Asesor id may not be empty");
+            .WithMessage("Asesor user id may not be empty");
     }
 
     private void AddRuleForNumeroTesis()
     {
         RuleFor(cmd => cmd.NumeroTesis)
+            .GreaterThan(0)
+            .WithErrorCode(DomainErrorCodes.Solicitud.InvalidNumeroTesis)
+            .WithMessage("Numero tesis must be greater than zero");
+    }
+
+    private void AddRuleForMensaje()
+    {
+        RuleFor(cmd => cmd.Mensaje)
             .NotEmpty()
-            .WithErrorCode(DomainErrorCodes.Solicitud.EmptyNumeroTesis)
-            .WithMessage("NumeroTesis may not be empty");
+            .WithErrorCode(DomainErrorCodes.Solicitud.EmptyMensaje)
+            .WithMessage("Mensaje may not be empty");
     }
 }

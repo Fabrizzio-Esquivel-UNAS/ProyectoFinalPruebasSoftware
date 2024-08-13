@@ -17,7 +17,7 @@ public sealed class CreateOrUpdateContratoCommandHandlerTests
     {
         var contrato = _fixture.SetupContrato();
 
-        var command = new CreateContratoCommand(
+        var command = new CreateContratosCommand(
             Guid.NewGuid(),
             contrato.SolicitudId);
 
@@ -32,7 +32,7 @@ public sealed class CreateOrUpdateContratoCommandHandlerTests
     [Fact]
     public async Task Should_Not_Create_Already_Existing_Contrato()
     {
-        var command = new CreateContratoCommand(
+        var command = new CreateContratosCommand(
             Guid.NewGuid(),
             Guid.NewGuid());
 

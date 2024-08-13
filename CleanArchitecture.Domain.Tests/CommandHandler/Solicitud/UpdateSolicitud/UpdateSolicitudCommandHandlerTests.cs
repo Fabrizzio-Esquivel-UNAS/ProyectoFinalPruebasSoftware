@@ -15,6 +15,7 @@ public sealed class UpdateSolicitudCommandHandlerTests
     [Fact]
     public async Task Should_Update_Solicitud()
     {
+        _fixture.SetupCurrentUser(UserRole.Admin);
         var command = new UpdateSolicitudCommand(
                 Guid.NewGuid(),
                 SolicitudStatus.Rechazado);
@@ -23,12 +24,13 @@ public sealed class UpdateSolicitudCommandHandlerTests
 
         await _fixture.CommandHandler.Handle(command, default);
 
+        var solicitudEstado = (int)command.Estado;
         _fixture
             .VerifyCommit()
             .VerifyNoDomainNotification()
             .VerifyRaisedEvent<SolicitudUpdatedEvent>(x =>
                 x.AggregateId == command.AggregateId &&
-                x.Estado == (int)command.Estado);
+                x.Estado == solicitudEstado);
     }
 
     [Fact]

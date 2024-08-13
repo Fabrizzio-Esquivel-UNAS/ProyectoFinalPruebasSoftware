@@ -3,9 +3,9 @@ using FluentValidation;
 
 namespace CleanArchitecture.Domain.Commands.Contratos.DeleteContrato;
 
-public sealed class DeleteContratoCommandValidation : AbstractValidator<DeleteContratoCommand>
+public sealed class DeleteContratosCommandValidation : AbstractValidator<DeleteContratosCommand>
 {
-    public DeleteContratoCommandValidation()
+    public DeleteContratosCommandValidation()
     {
         AddRuleForId();
     }

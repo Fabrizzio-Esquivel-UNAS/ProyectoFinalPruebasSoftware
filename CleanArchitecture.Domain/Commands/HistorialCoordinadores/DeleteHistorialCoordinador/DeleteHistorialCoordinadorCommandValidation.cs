@@ -15,6 +15,6 @@ public sealed class DeleteHistorialCoordinadorCommandValidation : AbstractValida
         RuleFor(cmd => cmd.AggregateId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyId)
-            .WithMessage("HistorialCoordinador id may not be empty");
+            .WithMessage("HistorialCoordinador id may not be empty"); // E1
     }
 }

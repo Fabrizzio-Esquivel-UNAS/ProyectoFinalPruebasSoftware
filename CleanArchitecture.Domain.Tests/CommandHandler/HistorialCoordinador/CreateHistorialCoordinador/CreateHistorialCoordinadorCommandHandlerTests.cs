@@ -3,16 +3,16 @@ using System;
 using System.Threading.Tasks;
 using CleanArchitecture.Domain.Commands.HistorialCoordinadores.CreateHistorialCoordinador;
 using CleanArchitecture.Domain.Errors;
-using CleanArchitecture.Domain.Tests.CommandHandler.HistorialCoordinador.CreateOrUpdateHistorialCoordinador;
+using CleanArchitecture.Domain.Tests.CommandHandler.HistorialCoordinador.CreateHistorialCoordinador;
 using CleanArchitecture.Shared.Events.HistorialCoordinador;
 using NSubstitute;
 using Xunit;
 
 namespace CleanArchitecture.Domain.Tests.CommandHandler.HistorialCoordinador.CreateHistorialCoordinador;
 
-public sealed class CreateOrUpdateHistorialCoordinadorCommandHandlerTests
+public sealed class CreateHistorialCoordinadorCommandHandlerTests
 {
-    private readonly CreateOrUpdateHistorialCoordinadorCommandTestFixture _fixture = new();
+    private readonly CreateHistorialCoordinadorCommandTestFixture _fixture = new();
 
     [Fact]
     public async Task Should_Create_HistorialCoordinador()

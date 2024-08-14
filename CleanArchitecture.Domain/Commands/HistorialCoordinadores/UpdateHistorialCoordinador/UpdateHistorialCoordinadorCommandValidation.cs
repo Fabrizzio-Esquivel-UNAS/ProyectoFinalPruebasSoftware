@@ -17,18 +17,14 @@ public sealed class UpdateHistorialCoordinadorCommandValidation : AbstractValida
         RuleFor(cmd => cmd.HistorialCoordinadorId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyId)
-            .WithMessage("HistorialCoordinador id may not be empty");
+            .WithMessage("HistorialCoordinador id may not be empty"); // E1
     }
 
     private void AddRuleForFechaFin()
     {
         RuleFor(cmd => cmd.FechaFin)
             .NotEmpty()
-            .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyFechaFin)
-            .WithMessage("Fecha may not be empty")
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.InvalidFechaFin)
-            .WithMessage("Fecha is not a valid Fecha");
+            .WithMessage("FechaFin is not a valid Fecha"); // E2
     }
 }
-
- 

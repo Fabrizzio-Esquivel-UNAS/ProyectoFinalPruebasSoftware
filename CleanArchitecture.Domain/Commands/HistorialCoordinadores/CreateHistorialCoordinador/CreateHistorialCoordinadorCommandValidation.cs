@@ -1,6 +1,7 @@
 ﻿using CleanArchitecture.Domain.Constants;
 using CleanArchitecture.Domain.Errors;
 using FluentValidation;
+using System;
 
 namespace CleanArchitecture.Domain.Commands.HistorialCoordinadores.CreateHistorialCoordinador;
 
@@ -19,7 +20,7 @@ public sealed class CreateHistorialCoordinadorCommandValidation : AbstractValida
         RuleFor(cmd => cmd.HistorialCoordinadorId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyId)
-            .WithMessage("HistorialCoordinador id may not be empty");
+            .WithMessage("HistorialCoordinador id may not be empty"); // E1
     }
 
     private void AddRuleForUserId()
@@ -27,9 +28,7 @@ public sealed class CreateHistorialCoordinadorCommandValidation : AbstractValida
         RuleFor(cmd => cmd.UserId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyUserId)
-            .WithMessage("User id may not be empty")
-            .WithErrorCode(DomainErrorCodes.HistorialCoordinador.InvalidUserId)
-            .WithMessage("User Id is not a valid User Id");
+            .WithMessage("User id may not be empty"); // E2
     }
 
     private void AddRuleForGrupoInvestigacionId()
@@ -37,20 +36,14 @@ public sealed class CreateHistorialCoordinadorCommandValidation : AbstractValida
         RuleFor(cmd => cmd.GrupoInvestigacionId)
             .NotEmpty()
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyGrupoInvestigacionId)
-            .WithMessage("Grupo Investigacion id may not be empty")
-            .WithErrorCode(DomainErrorCodes.HistorialCoordinador.InvalidGrupoInvestigacionId)
-            .WithMessage("Grupo Investigacion Id is not a valid User Id");
+            .WithMessage("GrupoInvestigacion id may not be empty"); // E3
     }
 
     private void AddRuleForFechaInicio()
     {
         RuleFor(cmd => cmd.FechaInicio)
-            .NotEmpty()
-            .WithErrorCode(DomainErrorCodes.HistorialCoordinador.EmptyFechaInicio)
-            .WithMessage("FechaInicio may not be empty")
+            .Must(date => date != default(DateTime))
             .WithErrorCode(DomainErrorCodes.HistorialCoordinador.InvalidFechaInicio)
-            .WithMessage("FechaInicio is not a valid Fecha");
+            .WithMessage("FechaInicio is not a valid Fecha"); // E4
     }
 }
-
-  

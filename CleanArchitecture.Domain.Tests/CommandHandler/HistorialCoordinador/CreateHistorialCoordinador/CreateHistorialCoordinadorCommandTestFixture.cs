@@ -6,12 +6,12 @@ using NSubstitute;
 
 namespace CleanArchitecture.Domain.Tests.CommandHandler.HistorialCoordinador.CreateHistorialCoordinador;
 
-public sealed class CreateOrUpdateHistorialCoordinadorCommandTestFixture : CommandHandlerFixtureBase
+public sealed class CreateHistorialCoordinadorCommandTestFixture : CommandHandlerFixtureBase
 {
     public CreateHistorialCoordinadorCommandHandler CommandHandler { get; }
     public IHistorialCoordinadorRepository HistorialCoordinadorRepository { get; }
 
-    public CreateOrUpdateHistorialCoordinadorCommandTestFixture()
+    public CreateHistorialCoordinadorCommandTestFixture()
     {
         HistorialCoordinadorRepository = Substitute.For<IHistorialCoordinadorRepository>();
 

@@ -32,4 +32,8 @@
         <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="CommandHandler\HistorialCoordinador\" />
+    </ItemGroup>
+
 </Project>

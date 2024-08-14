@@ -8,10 +8,14 @@ message Escuela {
   bool isDeleted = 3;
 }
 
-message GetEscuelasByIdsResult {
-  repeated Escuela escuelas = 1;
-}
-
 message GetEscuelasByIdsRequest {
   repeated string ids = 1;
+}
+
+message GetEscuelasByIdsResponse {
+  repeated EscuelaProto Escuelas = 1;
+}
+
+service EscuelasApi {
+  rpc GetByIds(GetEscuelasByIdsRequest) returns (GetEscuelasByIdsResponse);
 }
